@@ -1,0 +1,23 @@
+.footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background:rgba(37, 36, 36, 1);
+    color: white;
+    align-items: center;
+}
+.content{
+    align-items:center;
+    display: flex;
+    align-content: space-around;
+    justify-content: center;
+}
+.mail{
+    display: flex;
+    flex-direction:column;
+}
+.mail input{
+    margin-bottom: 1vh;
+    border-radius: 5px
+;
+}
