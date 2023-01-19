@@ -1,5 +1,5 @@
 import React from 'react';
-import icon from "../pages/iwsd icon.png";
+import icon from "../pageComponents/iwsd icon.png";
 
 
 const Header = () => {
@@ -7,7 +7,7 @@ const Header = () => {
             <div className="header">
                 <div className="catalog-header">
                     <div className="catalog-navigation">
-                        <a className="catalog-brand-img" href="/">
+                        <a className="catalog-brand-img" href="/src/components/pages">
                             <img src={icon} alt=""></img>
                         </a>
                         <div className="border">cerf</div>

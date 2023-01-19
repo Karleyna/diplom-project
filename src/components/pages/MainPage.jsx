@@ -1,7 +1,7 @@
 import React from "react"
-import icon from "./iwsd icon.png";
-import Header from "../pageComponents/Header";
-import Footer from "../Footer";
+import icon from "../pageComponents/iwsd icon.png";
+import Header from "./Header";
+import Footer from "./Footer";
 
 const MainPage = () =>
 {
