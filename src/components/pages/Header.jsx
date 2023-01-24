@@ -8,13 +8,18 @@ const Header = () => {
             <div className="header">
                 <div className="catalog-header">
                     <div className="catalog-navigation">
-                        <a className="catalog-brand-img" href="/src/components/pages">
-                            <img src={icon} alt=""></img>
-                        </a>
-                        <div className="border">cerf</div>
-                        <div className="border">cerf</div>
-                        <div className="border">cerf</div>
-                        <div className="border">cerf</div>
+                        <div className="catalog-navigation-image">
+                            <a className="catalog-brand-img" href="/src/components/pages">
+                                <img src={icon} alt=""></img>
+                            </a>
+                        </div>
+                        <nav className="catalog-navigation-buttons">
+                            <div className="border">cerf</div>
+                            <div className="border">cerf</div>
+                            <div className="border">cerf</div>
+                            <div className="border">cerf</div>
+                        </nav>
+
 
                     </div>
                 </div>

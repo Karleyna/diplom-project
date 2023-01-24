@@ -1,23 +1,83 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Oswald:wght@200&family=Yeseva+One&display=swap');
 .footer{
     width: 100%;
+    height: 26vh;
     position: absolute;
     bottom: 0;
     background:rgba(37, 36, 36, 1);
     color: white;
+    display: flex;
     align-items: center;
+    justify-content: center;
+
 }
 .content{
+    display: flex;
     align-items:center;
-    display: flex;
-    align-content: space-around;
-    justify-content: center;
+    font-family: 'Yeseva One', cursive;
+    font-size: 0.9em;
+    justify-content: space-around ;
+    width: 32vw;
+    height: 22vh;
 }
-.mail{
+
+.contacts{
     display: flex;
+    width: 13vw;
+    height: 18vh;
+    align-items: center;
     flex-direction:column;
 }
-.mail input{
-    margin-bottom: 1vh;
-    border-radius: 5px
-;
+.text{
+    width: 12.5vw;
+    align-self: center;
+    text-align: left;
+    font-family: 'Comfortaa', cursive;
+
+}
+.text p {
+    font-size: 0.85em;
+}
+.social{
+    border: green solid;
+    width: 12.5vw;
+    height: 4vh;
+    display: flex;
+}
+.social a img{
+    height: 3.5vh;
+
+}
+.mail{
+    width: 15vw;
+    height: 18vh;
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+    align-items: center;
+}
+.inputs{
+    font-family: 'Comfortaa', cursive;
+    width: 13vw;
+    height: 16vh;
+    display: flex;
+    justify-content: space-around ;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+.inputs input{
+    width: 7vw;
+    height: 2.5vh;                                                ;
+    border-radius: 5px;
+}
+.inputs textarea{
+    width: 13vw;
+    height: 6.5vh;
+    border-radius: 5px;
+}
+::placeholder{
+    font-family: 'Comfortaa', cursive;
+    font-size: 0.9em;
 }

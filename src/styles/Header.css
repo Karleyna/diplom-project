@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Oswald:wght@200&family=Yeseva+One&display=swap');@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Oswald:wght@200&family=Yeseva+One&display=swap');
 *{
     padding: 0;
     margin: 0;
@@ -44,26 +45,35 @@
 }
 .catalog-header{
     display: flex;
-    width: 50%;
+    width: 100%;
 }
 .catalog-navigation{
     display: flex;
+    align-content: space-between;
+    width: 100%;
+}
+.catalog-navigation-image{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.catalog-navigation-buttons{
+    display: flex;
     justify-content: space-around;
     width: 100%;
-
+    align-items: center;
 }
 .border{
     border: red solid;
 }
 
 .catalog-brand-img{
-
     width: 3vw;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     cursor: pointer;
-
 }
 .catalog-brand-img img{
     width: 100%;
