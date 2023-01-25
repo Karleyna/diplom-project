@@ -1,6 +1,8 @@
 import React from 'react';
 import "../../styles/Footer.css";
-import icon_youtube from "../pageComponents/youtube-play.png";
+import iconYoutube from "../pageComponents/YouTube_full-color_icon.png";
+import iconVK from "../pageComponents/VK.com-logo.svg.png";
+import iconTelegram from "../pageComponents/Telegram_logo.png";
 const Footer = () => {
     return (
         <div className="footer">
@@ -15,11 +17,17 @@ const Footer = () => {
                         <p>Новосибирск ул. Где-нибудь, 58 </p>
                         <p>Верхняя зона Академгородка м-н, Советский район, Новосибирск,
                         Пирогова 78</p>
-                    </div>
-                    <div className="social">
-                        <a className="social-youtube" href="../pageComponents/youtube-play.png">
-                            <img src={icon_youtube} alt=""></img>
-                        </a>
+                        <div className="social">
+                            <a className="social-youtube" href="../pageComponents/YouTube_full-color_icon.png">
+                                <img src={iconYoutube} alt=""></img>
+                            </a>
+                            <a className="social-vk" href="../pageComponents/VK.com-logo.svg.png">
+                                <img src={iconVK} alt=""></img>
+                            </a>
+                            <a className="social-telegram" href="../pageComponents/Telegram_logo.png">
+                                <img src={iconTelegram} alt=""></img>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div className="mail">
