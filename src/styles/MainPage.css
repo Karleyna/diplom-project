@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Oswald:wght@200&family=Yeseva+One&display=swap');
+
+
 .heading{
     background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)), url("../components/pageComponents/wallpaperbetter.com_3840x2160 (1).jpg");
     background-size: cover;
@@ -36,17 +38,29 @@
 .text-heading h2:last-child{
     font-size: 2rem;
 }
+.main-sections{
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    font-family: "Comfortaa", serif;
+
+}
+.main-sections h2,h3,h4,h5,h6{
+    font-family: 'Yeseva One', serif;
+}
 .about-us{
     display: flex;
     height: 30vh;
     flex-flow: column;
     align-items: center;
     justify-content: space-around;
-    border: #70f8ff solid;
     font-family: 'Yeseva One', cursive;
 }
 .about-us div p{
     font-family: "Comfortaa", serif;
+}
+.about-us h2{
+    font-size: 3.5rem;
 }
 .description-org{
     display: flex;
@@ -64,5 +78,29 @@
 
 .description-org p{
     width: 95%;
+}
+.course{
+    border: #70f8ff solid;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 50vh;
+    width: 45vw;
+}
+.course h2{
+    font-size: 3.5rem;
+    height: 30%;
+}
+.courses{
+    border: green solid;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    justify-content: space-around;
 
+}
+.course-item{
+    color: white;
+    background: rgba(29, 52, 54, 1) ;
 }
