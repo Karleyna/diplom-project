@@ -43,29 +43,26 @@
     align-items: center;
     flex-flow: column;
     font-family: "Comfortaa", serif;
+    font-size: 1.5rem;
 
 }
 .main-sections h2,h3,h4,h5,h6{
     font-family: 'Yeseva One', serif;
 }
+.main-sections h2{
+    font-size: 4rem;
+}
 .about-us{
     display: flex;
-    height: 30vh;
+    height: 40vh;
     flex-flow: column;
     align-items: center;
     justify-content: space-around;
-    font-family: 'Yeseva One', cursive;
-}
-.about-us div p{
-    font-family: "Comfortaa", serif;
-}
-.about-us h2{
-    font-size: 3.5rem;
 }
 .description-org{
     display: flex;
-    width: 45vw;
-    height: 18vh;
+    width: 55vw;
+    height: 27vh;
     flex-flow: column;
     text-align: center;
     align-items: center;
@@ -80,27 +77,96 @@
     width: 95%;
 }
 .course{
-    border: #70f8ff solid;
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: space-around;
-    height: 50vh;
-    width: 45vw;
 }
 .course h2{
-    font-size: 3.5rem;
     height: 30%;
 }
 .courses{
-    border: green solid;
     display: flex;
     flex-flow: column;
-    height: 100%;
+    align-items: flex-end;
     justify-content: space-around;
-
+    height: 80vh;
+    width: 50vw;
 }
 .course-item{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
     color: white;
+    /*font-size: 0.9rem;*/
+    text-align: center;
     background: rgba(29, 52, 54, 1) ;
+    height: 33vh;
+    width: 20vw;
+    border-radius: 15px;
+}
+.course-item:first-child{
+    font-size: 1.8rem;
+    position: absolute;
+    align-self: flex-start;
+    height: 43vh;
+    width: 24vw;
+    z-index: -1;
+}
+
+.group-trainers{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 70vw;
+    height: 58vh;
+    /*overflow: auto;*/
+}
+.trainer-item{
+    text-decoration:none;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+    background: rgba(255, 118, 76, 1);
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    width: 19vw;
+    height: 50vh;
+}
+.trainer-photo{
+    height: 200px;
+    width: 200px;
+    background: white;
+    border-radius: 60%;
+}
+.trainer-item-text{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    height: 10vw;
+}
+.trainer-item:last-child{
+    order: 2;
+}
+.trainer-item:first-child{
+    font-size: 1.8rem;
+    width: 22vw;
+    height: 54vh;
+    order: 1;
+}
+.trainer-item:first-child .trainer-photo{
+    height: 230px;
+    width: 230px;
+}
+.ad{
+    display: flex;
+}
+.ad-back{
+    height: 20vh;
+    width: 20vw;
+    background: #1D3436;
+    border-radius: 20px;
+    border: yellow solid;
 }
