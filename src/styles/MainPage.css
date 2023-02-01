@@ -162,11 +162,38 @@
 }
 .ad{
     display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
 }
-.ad-back{
-    height: 20vh;
-    width: 20vw;
+.registration-form{
+
+}
+.ad-background_{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 60vh;
+    width: 65vw;
     background: #1D3436;
     border-radius: 20px;
     border: yellow solid;
 }
+.ad-white-border{
+    height: 25vh;
+    width: 30vw;
+    border: white solid;
+    border-radius: 20px;
+}
+.ad-instruction{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border: white solid;
+    border-radius: 20px;
+    width: 20vw;
+    height: 40vh;
+}
+
+ol li{list-style-position:inside;}
