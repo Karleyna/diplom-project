@@ -174,26 +174,79 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 60vh;
-    width: 65vw;
+    height: 63vh;
+    width: 70vw;
     background: #1D3436;
     border-radius: 20px;
-    border: yellow solid;
+}
+.ad-content_{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 55vh;
+    width: 66vw;
+}
+.registration-fields{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-flow: column;
+    height: 54vh;
+    width: 42vw;
+}
+.registration-fields p{
+    font-size: 2.4rem;
+    text-align: center;
 }
 .ad-white-border{
-    height: 25vh;
-    width: 30vw;
+    height: 35vh;
+    width: 42vw;
     border: white solid;
     border-radius: 20px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.line{
+    display: flex;
+    justify-content: space-between;
+    width: 40vw;
+    height: 7vh;
+}
+.line.one input{
+    border-radius: 15px;
+    width: 18vw;
+    font-family: "Comfortaa", serif;
+}
+.line.two input{
+    width: 40vw;
+    border-radius: 15px;
+    font-family: "Comfortaa", serif;
+}
+.line button{
+    width: 40vw;
+    border-radius: 15px;
+    font-family: "Comfortaa", serif;
+    background: rgba(255, 118, 76, 1);
+    color: white;
+}
+.line ::placeholder{
+    font-size: 1.7rem;
+    transform: translateX(1vw);
 }
 .ad-instruction{
     display: flex;
     align-items: center;
-    text-align: center;
+    text-align: left;
     border: white solid;
     border-radius: 20px;
-    width: 20vw;
-    height: 40vh;
+    width: 22vw;
+    height: 54vh;
 }
 
-ol li{list-style-position:inside;}
+ol li{
+    margin-left: 5vh;
+    margin-bottom: 5vh;
+    font-size: 1.7rem;
+}

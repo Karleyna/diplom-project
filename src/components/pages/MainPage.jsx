@@ -84,20 +84,36 @@ const MainPage = () =>
                         <h2>Заинтересовали? Тогда вот наше следующее предложение!</h2>
                         <div className="registration-form">
                             <div className="ad-background_">
-                                <div className="registration-fields">
-                                    <h4>Зарегистриуйтесь и получите мастер-класс в подарок!</h4>
-                                    <div className="ad-white-border">
+                                <div className="ad-content_">
+                                    <div className="registration-fields">
+                                        <p>Зарегистриуйтесь и получите мастер-класс в подарок!</p>
+                                        <div className="ad-white-border">
+                                            <div className="line one">
+                                                <input type="text" placeholder="Имя"/>
+                                                <input type="telephone" placeholder="Телефон"/>
+                                            </div>
+                                            <div className="line two">
+                                                <input type="email" placeholder="Почта"/>
+                                            </div>
+                                            <div className="line three">
+                                                <button type="submit">
+                                                    <p>Зарегистрироваться</p>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="ad-instruction">
+                                        <ol className="ad-instruction_steps">
+                                            <li>После регистрации подтвердите свой аккаунт, перейдя по ссылке в письме.</li>
+                                            <li>Далее перейдите во вкладку с курсами и начните обучение уже сегодня!</li>
+                                        </ol>
                                     </div>
                                 </div>
-                                <div className="ad-instruction">
-                                    <ol className="ad-instruction_steps">
-                                        <li>После регистрации подтвердите свой аккаунт, перейдя по ссылке в письме.</li>
-                                        <li>Далее перейдите во вкладку с курсами и начните обучение уже сегодня!</li>
-                                    </ol>
-                                </div>
+
                             </div>
                         </div>
                     </section>
+
                 </section>
             </main>
         </body>
