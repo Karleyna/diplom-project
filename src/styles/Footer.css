@@ -29,6 +29,9 @@
     align-items: center;
     flex-direction:column;
 }
+.contacts h1{
+    width: 13vw;
+}
 .text{
     width: 12.5vw;
     align-self: center;

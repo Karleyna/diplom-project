@@ -1,8 +1,12 @@
 import React from "react"
+import "C:/Menu/Колледж/Диплом/programming/src/components/pageComponents/Map2gis.js";
 import icon from "../pageComponents/iwsd icon.png";
 import Header from "./Header";
 import Footer from "./Footer";
 import "../../styles/MainPage.css";
+
+
+
 const MainPage = () =>
 {
     return <>
@@ -113,7 +117,15 @@ const MainPage = () =>
                             </div>
                         </div>
                     </section>
+                    <section className="map-block">
+                        <h2></h2>
+                        <div className="map">
+                            <div id="container">
 
+                            </div>
+                        </div>
+                        <div className="text-address"></div>
+                    </section>
                 </section>
             </main>
         </body>

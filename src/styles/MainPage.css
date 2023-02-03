@@ -11,6 +11,9 @@
     align-items: center;
     justify-content: flex-end;
 }
+.main-sections section{
+    margin-bottom: 30px;
+}
 .text-heading{
     border: #C3462E solid;
     height: 35vh;
@@ -22,7 +25,6 @@
     align-items: center;
     flex-flow: column;
     justify-content: center;
-
 }
 .heading::after{
     content: "  ";
@@ -166,6 +168,11 @@
     justify-content: space-around;
     align-items: center;
 }
+.ad h2{
+    width: 60vw;
+    text-align: center;
+    margin-bottom: 20px;
+}
 .registration-form{
 
 }
@@ -233,8 +240,10 @@
 }
 .line ::placeholder{
     font-size: 1.7rem;
-    transform: translateX(1vw);
+    /*transform: translateX(1vw);*/
+    padding: 20px;
 }
+
 .ad-instruction{
     display: flex;
     align-items: center;
@@ -249,4 +258,13 @@ ol li{
     margin-left: 5vh;
     margin-bottom: 5vh;
     font-size: 1.7rem;
+}
+.map{
+    width: 53vw;
+    height: 30vh;
+    border: green solid;
+}
+#container{
+    width: 50vw;
+    height: 30vh;
 }
