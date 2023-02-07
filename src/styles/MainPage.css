@@ -240,7 +240,6 @@
 }
 .line ::placeholder{
     font-size: 1.7rem;
-    /*transform: translateX(1vw);*/
     padding: 20px;
 }
 
@@ -260,11 +259,11 @@ ol li{
     font-size: 1.7rem;
 }
 .map{
-    width: 53vw;
-    height: 30vh;
+    width: 55vw;
+    height: 50vh;
     border: green solid;
 }
 #container{
     width: 50vw;
-    height: 30vh;
+    height: 50vh;
 }

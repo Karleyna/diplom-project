@@ -4,6 +4,7 @@ import icon from "../pageComponents/iwsd icon.png";
 import Header from "./Header";
 import Footer from "./Footer";
 import "../../styles/MainPage.css";
+import {Map} from "../pageComponents/Map2gis";
 
 
 
@@ -120,9 +121,7 @@ const MainPage = () =>
                     <section className="map-block">
                         <h2></h2>
                         <div className="map">
-                            <div id="container">
-
-                            </div>
+                            <Map/>
                         </div>
                         <div className="text-address"></div>
                     </section>
