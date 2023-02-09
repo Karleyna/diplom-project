@@ -1,12 +1,20 @@
+import React from "react";
+import {
+    Routes,
+    Route,
+    Navigate,
+    Link
+} from "react-router-dom";
 import MainPage from "./pages/MainPage/MainPage";
+import Loginform from "./pages/LoginForm/Loginform";
 
 
-function App() {
-
+export default function App() {
     return (
-        <div className="App">
-            <MainPage/>
-        </div>
+        <Routes>
+            <Route path='/' element={<MainPage/>} />
+            <Route path='/login' element={<Loginform/>} />
+        </Routes>
     );
-}
-export default App;
+};
+
