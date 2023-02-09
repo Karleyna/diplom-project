@@ -1,6 +1,6 @@
 import React from 'react';
-import "../../styles/Header.css"
-import icon from "../pageComponents/iwsd icon.png";
+import "./Header.css"
+import icon from "../../ui/PicturesForUI/iwsd icon.png";
 
 
 const Header = () => {

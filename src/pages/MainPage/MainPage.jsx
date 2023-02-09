@@ -1,10 +1,9 @@
 import React from "react"
-import "C:/Menu/Колледж/Диплом/programming/src/components/pageComponents/Map2gis.js";
-import icon from "../pageComponents/iwsd icon.png";
-import Header from "./Header";
-import Footer from "./Footer";
-import "../../styles/MainPage.css";
-import {Map} from "../pageComponents/Map2gis";
+import icon from "../../ui/PicturesForUI/iwsd icon.png";
+import Header from "../../modules/Header/Header";
+import Footer from "../../modules/Footer/Footer";
+import "./MainPage.css";
+import {Map} from "../../components/Map2GisComponents/Map2gis";
 
 
 
@@ -62,21 +61,21 @@ const MainPage = () =>
                     <section className="trainers">
                         <h2>Они помогут прийти к результату!</h2>
                         <div className="group-trainers">
-                            <a href="/src/components/pages" className="trainer-item">
+                            <a href="/src/pages" className="trainer-item">
                                 <div className="trainer-photo"> </div>
                                 <div className="trainer-item-text">
                                     <h2>Тренер</h2>
                                     <p>Описание Описание Описание </p>
                                 </div>
                             </a>
-                            <a href="/src/components/pages" className="trainer-item">
+                            <a href="/src/pages" className="trainer-item">
                                 <div className="trainer-photo"> </div>
                                 <div className="trainer-item-text">
                                     <h2>Тренер</h2>
                                     <p>Описание Описание Описание </p>
                                 </div>
                             </a>
-                            <a href="/src/components/pages" className="trainer-item">
+                            <a href="/src/pages" className="trainer-item">
                                 <div className="trainer-photo"> </div>
                                 <div className="trainer-item-text">
                                     <h2>Тренер</h2>
@@ -119,11 +118,16 @@ const MainPage = () =>
                         </div>
                     </section>
                     <section className="map-block">
-                        <h2></h2>
+                        <h2>Наше местоположение:</h2>
                         <div className="map">
                             <Map/>
                         </div>
-                        <div className="text-address"></div>
+                        <div className="text-address">
+                            <p>Очные занятия проходят по адресу:</p>
+                            <p>
+                                📍 Тружеников, 16а Шлюз м-н, Советский район, Новосибирск, 630058
+                            </p>
+                        </div>
                     </section>
                 </section>
             </main>

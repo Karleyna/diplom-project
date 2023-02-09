@@ -9,7 +9,7 @@ export const Map = () => {
         load().then((mapglAPI) => {
             map = new mapglAPI.Map('map-container', {
                 center: [83.048302,54.849405],
-                zoom: 18,
+                zoom: 17,
                 key: doubleGisApiKey,
             });
             const marker = new mapglAPI.Marker(map, {
@@ -23,7 +23,7 @@ export const Map = () => {
     }, []);
 
     return (
-        <div style={{ width: '100%', height: '100%' }}>
+        <div style={{ width: '100%', height: '100%'}}>
             <MapWrapper />
         </div>
     );

@@ -1,8 +1,8 @@
 import React from 'react';
-import "../../styles/Footer.css";
-import iconYoutube from "../pageComponents/YouTube_full-color_icon.png";
-import iconVK from "../pageComponents/VK.com-logo.svg.png";
-import iconTelegram from "../pageComponents/Telegram_logo.png";
+import "./Footer.css";
+import iconYoutube from "../../ui/PicturesForUI/YouTube_full-color_icon.png";
+import iconVK from "../../ui/PicturesForUI/VK.com-logo.svg.png";
+import iconTelegram from "../../ui/PicturesForUI/Telegram_logo.png";
 const Footer = () => {
     return (
         <div className="footer">
@@ -18,13 +18,13 @@ const Footer = () => {
                         <p>Верхняя зона Академгородка м-н, Советский район, Новосибирск,
                         Пирогова 78</p>
                         <div className="social">
-                            <a className="social-youtube" href="../pageComponents/YouTube_full-color_icon.png">
+                            <a className="social-youtube" href="../../ui/PicturesForUI/YouTube_full-color_icon.png">
                                 <img src={iconYoutube} alt=""></img>
                             </a>
-                            <a className="social-vk" href="../pageComponents/VK.com-logo.svg.png">
+                            <a className="social-vk" href="../../ui/PicturesForUI/VK.com-logo.svg.png">
                                 <img src={iconVK} alt=""></img>
                             </a>
-                            <a className="social-telegram" href="../pageComponents/Telegram_logo.png">
+                            <a className="social-telegram" href="../../ui/PicturesForUI/Telegram_logo.png">
                                 <img src={iconTelegram} alt=""></img>
                             </a>
                         </div>
