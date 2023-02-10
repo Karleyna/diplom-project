@@ -18,7 +18,7 @@ const Header = () => {
                             <MyLink to='/login'>Войти</MyLink>
                             <MyLink to='/login'>Войти</MyLink>
                             <MyLink to='/login'>Войти</MyLink>
-                            <MyLink to='/login'>Войти</MyLink>
+                            <MyLink to='/'>Назад</MyLink>
                         </nav>
 
 
