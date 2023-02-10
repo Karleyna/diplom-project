@@ -1,0 +1,9 @@
+.myBtn{
+    border-radius: 10px;
+    font-family: "Comfortaa", serif;
+    background: rgba(255, 118, 76, 1);
+    color: white;
+    font-size: 1.3rem;
+    width: 100%;
+    height:100%;
+}

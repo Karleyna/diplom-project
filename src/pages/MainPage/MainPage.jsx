@@ -4,6 +4,7 @@ import Header from "../../modules/Header/Header";
 import Footer from "../../modules/Footer/Footer";
 import "./MainPage.css";
 import {Map} from "../../components/Map2GisComponents/Map2gis";
+import MyLink from "../../ui/links/MyLink";
 
 
 

@@ -1,0 +1,34 @@
+.test{
+    background: #1D3436;
+    height: 35vh;
+    width: 42vw;
+    border: white solid;
+    border-radius: 20px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+.input{
+    height: 10vh;
+    width: 25vw;
+    color: white;
+    text-align: center;
+    font-family: "Comfortaa", cursive;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: column;
+    align-items: center;
+
+}
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4vh;
+    width: 50%;
+}
+.coment{
+    font-size: 0.8rem;
+}

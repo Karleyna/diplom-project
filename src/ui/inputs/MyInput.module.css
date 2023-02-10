@@ -1,0 +1,9 @@
+.myInput{
+    border-radius: 10px;
+    font-family: "Comfortaa", serif;
+    font-size: 1rem;
+    padding: 15px;
+}
+.myInput::placeholder{
+    padding: 15px;
+}

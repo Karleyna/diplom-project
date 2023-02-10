@@ -1,7 +1,8 @@
 import React from 'react';
 import "./Header.css"
 import icon from "../../ui/PicturesForUI/iwsd icon.png";
-
+import {Link} from "react-router-dom";
+import MyLink from "../../ui/links/MyLink";
 
 const Header = () => {
     return (
@@ -9,15 +10,15 @@ const Header = () => {
                 <div className="catalog-header">
                     <div className="catalog-navigation">
                         <div className="catalog-navigation-image">
-                            <a className="catalog-brand-img" href="/src/components/pages">
+                            <a className="catalog-brand-img" href="/">
                                 <img src={icon} alt=""></img>
                             </a>
                         </div>
                         <nav className="catalog-navigation-buttons">
-                            <div className="border">cerf</div>
-                            <div className="border">cerf</div>
-                            <div className="border">cerf</div>
-                            <div className="border">cerf</div>
+                            <MyLink to='/login'>Войти</MyLink>
+                            <MyLink to='/login'>Войти</MyLink>
+                            <MyLink to='/login'>Войти</MyLink>
+                            <MyLink to='/login'>Войти</MyLink>
                         </nav>
 
 
