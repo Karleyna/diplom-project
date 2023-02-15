@@ -62,21 +62,21 @@ const MainPage = () =>
                     <section className="trainers">
                         <h2>Они помогут прийти к результату!</h2>
                         <div className="group-trainers">
-                            <a href="/src/pages" className="trainer-item">
+                            <a href="/client/src/pages" className="trainer-item">
                                 <div className="trainer-photo"> </div>
                                 <div className="trainer-item-text">
                                     <h2>Тренер</h2>
                                     <p>Описание Описание Описание </p>
                                 </div>
                             </a>
-                            <a href="/src/pages" className="trainer-item">
+                            <a href="/client/src/pages" className="trainer-item">
                                 <div className="trainer-photo"> </div>
                                 <div className="trainer-item-text">
                                     <h2>Тренер</h2>
                                     <p>Описание Описание Описание </p>
                                 </div>
                             </a>
-                            <a href="/src/pages" className="trainer-item">
+                            <a href="/client/src/pages" className="trainer-item">
                                 <div className="trainer-photo"> </div>
                                 <div className="trainer-item-text">
                                     <h2>Тренер</h2>

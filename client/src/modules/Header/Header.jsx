@@ -10,7 +10,7 @@ const Header = () => {
                 <div className="catalog-header">
                     <div className="catalog-navigation">
                         <div className="catalog-navigation-image">
-                            <a className="catalog-brand-img" href="/">
+                            <a className="catalog-brand-img" href="/Menu/Колледж/Диплом/programming">
                                 <img src={icon} alt=""></img>
                             </a>
                         </div>
