@@ -1,23 +1,20 @@
 const sequelize = require('../db');
 const {DataTypes} = require('sequelize');
 
-const User = sequelize.define('user',{
-        id: { type: DataTypes.UUID, primaryKey: true},
-        email: { type: DataTypes.STRING, unique: true},
-        password: { type: DataTypes.STRING},
-        role: { type: DataTypes.STRING, defaultValue: "user"}
-        // references: {
-        //                 model: Role,// This is the column name of the referenced model
-        //                 key: 'name', // With PostgreSQL, it is optionally possible to declare when to check the foreign key constraint, passing the Deferrable type.
-        //                 deferrable: Deferrable.INITIALLY_IMMEDIATE
-        //         }
+const User = sequelize.define('user', {
+
+    id: {type: DataTypes.UUID, primaryKey: true},
+    email: {type: DataTypes.STRING, unique: true},
+    role: {type: DataTypes.STRING, defaultValue: "user"},
+    level: {type: DataTypes.STRING},
+    FIO: {type: DataTypes.TEXT},
+    password: {type: DataTypes.STRING},
+    telephone: {type: DataTypes.STRING},
+    dateOfBirth: {type: DataTypes.DATE, DateStyle: "DMY"}
+
 });
-// const Role = sequelize.define('role',{
-//         name: { type: DataTypes.UUID, primaryKey: true}
-// });
-//
-// User.hasMany(Role)
-// Role.belongsTo(User)
+
+
 module.exports = {
-        User
+    User
 }

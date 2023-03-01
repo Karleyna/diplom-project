@@ -34,7 +34,7 @@ const LoginForm = () => {
                                         <label>Логин:
                                             <MyInput type="text" {...input} style={{width: "15vw", height:"2vh", margin: "0.5vw"}} placeholder="Логин"/>
                                         </label>
-                                        {meta.touched && meta.error && <div className={classes.coment}>{meta.error}</div>}
+                                        {meta.touched && meta.error && <span className={classes.coment}>{meta.error}</span>}
                                     </div>
                                 )}
                             </Field>
@@ -44,10 +44,13 @@ const LoginForm = () => {
                                         <label>Пароль:
                                             <MyInput type="password"{...input} style={{width: "15vw", height:"2vh", margin: "0.5vw"}} placeholder="Пароль"/>
                                         </label>
-                                        {meta.touched && meta.error && <div className={classes.coment}>{meta.error}</div>}
+                                        {meta.touched && meta.error && <span className={classes.coment}>{meta.error}</span>}
                                     </div>
                                 )}
                             </Field>
+                            <div>
+
+                            </div>
                             <div className={classes.btn}>
                                 <MyButton type="submit"> Войти </MyButton>
                             </div>

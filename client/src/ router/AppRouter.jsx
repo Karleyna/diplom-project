@@ -8,7 +8,7 @@ import {
 import MainPage from "../pages/MainPage/MainPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 
-const Router = () => {
+export const AppRouter = () => {
     return (
         <Routes>
             <Route path='/' element={<MainPage/>} />
@@ -16,5 +16,12 @@ const Router = () => {
         </Routes>
     );
 };
+export const publicRouter = () =>{
+    return (
+        <Routes>
+            <Route path='/' element={<MainPage/>} />
+            <Route path='/login' element={<LoginPage/>} />
+        </Routes>
+    );
+}
 
-export default Router;

@@ -1,7 +1,8 @@
 const ApiError = require('../errors/ApiError');
+const uuid = require('uuid');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const {User} = require('../models/models');
+const {User, UserInfo} = require('../models/models');
 
 const generateJwt = (id, email, role) => {
     return jwt.sign({id, email, role},
@@ -12,6 +13,7 @@ const generateJwt = (id, email, role) => {
 
 class UserController {
     async registration(req, res, next) {
+        let id = uuid.v4();
         const {email, password, role} = req.body;
         if (!email || !password) {
             return next(ApiError.badRequest('Invalid email or password'));
@@ -21,7 +23,7 @@ class UserController {
             return next(ApiError.badRequest('User with this email already exists'));
         }
         const hashPassword = await bcrypt.hash(password, 4);
-        const user = await User.create({email, role, password: hashPassword});
+        const user = await User.create({id, email, role, password: hashPassword});
         const token = generateJwt(user.id, user.email, user.role);
         return res.json({token});
     }
