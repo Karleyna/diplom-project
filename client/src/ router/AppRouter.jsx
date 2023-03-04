@@ -18,19 +18,5 @@ export const AppRouter = () => {
             )}
             <Route path='*' element={<Navigate to={MAIN_ROUTE}/>}/>
         </Routes>
-
-        // <Routes>
-        //     <Route path='/' element={<MainPage/>} />
-        //     <Route path='/login' element={<LoginPage/>} />
-        // </Routes>
     );
 };
-// export const publicRouter = () =>{
-//     return (
-//         <Routes>
-//             <Route path='/' element={<MainPage/>} />
-//             <Route path='/login' element={<LoginPage/>} />
-//         </Routes>
-//     );
-// }
-
