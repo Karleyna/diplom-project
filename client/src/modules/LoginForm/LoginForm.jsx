@@ -1,79 +1,68 @@
-import React from 'react';
-import { Form as FinalForm, Field } from 'react-final-form'
+import React, {useContext, useState} from 'react';
 import MyInput from "../../ui/inputs/MyInput";
 import MyButton from "../../ui/buttons/MyButton";
 import classes from "./LoginForm.module.css"
+import MyLink from "../../ui/links/MyLink";
+import {useLocation} from "react-router-dom";
+import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../../utils/consts";
+import {login, registration} from "../../http/userAPI";
+import {observer} from "mobx-react-lite";
+import {Context} from "../../index";
 
 
-const required = (value) => (value ? undefined : "Это поле не может быть пустым")
-const validLogin = (value) => {
-    if (!/^([a-z0-9]{6,20})$/.test(value)) {
-        return "Логин должен содержать от 6 до 20 символов латинского алфавита и цифры.";
+const LoginForm = observer( ()=> {
+    const location = useLocation()
+    const {user} = useContext(Context);
+    const isLogin = location.pathname === LOGIN_ROUTE;
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        click();
+    };
+
+
+    const click = async () => {
+        console.log(email,password)
+        let data;
+        if (isLogin) {
+            data = await login(email, password);
+        } else {
+
+            data = await registration(email, password);
+            console.log(response);
+        }
+        user.setUser(user);
+        user.setIsAuth(true)
     }
-    return undefined;
-};
-const composeValidators = (...validators) => (value) =>
-    validators.reduce((error, validator) => error || validator(value), undefined)
-
-const onSubmit = (values) => {
-      // отправка данных на сервер
-     console.log(values);
-};
-
-const LoginForm = () => {
     return (
-        <section>
-            <div >
-                <FinalForm
-                    onSubmit={onSubmit}
-                    render={({handleSubmit}) => (
-                        <form onSubmit={handleSubmit} className={classes.test}>
-                            <Field name="login" validate={composeValidators(required, validLogin)} >
-                                {({ input, meta}) => (
-                                    <div className={classes.input}>
-                                        <label>Логин:
-                                            <MyInput type="text" {...input} style={{width: "15vw", height:"2vh", margin: "0.5vw"}} placeholder="Логин"/>
-                                        </label>
-                                        {meta.touched && meta.error && <span className={classes.coment}>{meta.error}</span>}
-                                    </div>
-                                )}
-                            </Field>
-                            <Field name="password" validate={required}>
-                                {({ input,meta}) => (
-                                    <div className={classes.input}>
-                                        <label>Пароль:
-                                            <MyInput type="password"{...input} style={{width: "15vw", height:"2vh", margin: "0.5vw"}} placeholder="Пароль"/>
-                                        </label>
-                                        {meta.touched && meta.error && <span className={classes.coment}>{meta.error}</span>}
-                                    </div>
-                                )}
-                            </Field>
-                            <div>
+        <div className={classes.test}>
+            <h2>{isLogin ? "Вход" : "Регистрация"}</h2>
+            <form className={classes.formElements} onSubmit={handleSubmit}>
+                <div style={{width: "60%", height: "60%"}}>
+                    <label className={classes.input}>
+                        <div style={{width: "28vw"}}>
+                            <MyInput value={email}  onChange={e => setEmail(e.target.value)}
+                                     placeholder={"Введите Ваш Email.."}></MyInput></div>
+                    </label>
+                    <label className={classes.input}>
+                        <div style={{width: "28vw"}}>
+                            <MyInput value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder={"Введите Ваш пароль.."}></MyInput>
+                        </div>
+                    </label>
+                </div>
+                <div className={classes.btn}>
+                    <MyButton type="submit" onClick={click} >{isLogin ? "Войти" : "Зарегистрироваться"}</MyButton>
+                </div>
+                {isLogin ? <div> Нет аккаунта? <MyLink to={REGISTRATION_ROUTE}
+                                                       style={{color: "white"}}> Зарегистрироваться</MyLink></div> :
+                    <div> Есть аккаунт? <MyLink to={LOGIN_ROUTE} style={{color: "white"}}>Войти</MyLink></div>}
+            </form>
 
-                            </div>
-                            <div className={classes.btn}>
-                                <MyButton type="submit"> Войти </MyButton>
-                            </div>
-                        </form>
-                    )}>
-                </FinalForm>
-            </div>
-        </section>
-    )
-};
+        </div>
+    );
+});
 
 export default LoginForm;
-
-
-
-
-// import styles from "./Form.module.css";
-
-// type FormValues = {
-//     login: string;
-//     password: string;
-// };
-
-
 
 

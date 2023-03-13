@@ -1,7 +1,8 @@
-.test{
+.test {
     background: #1D3436;
-    height: 35vh;
-    width: 42vw;
+    height: 50vh;
+    width: 45vw;
+    color: white;
     border: white solid;
     border-radius: 20px;
     display: flex;
@@ -9,28 +10,43 @@
     align-items: center;
     justify-content: center;
 }
-.input{
-    height: 8vh;
-    width: 23vw;
+
+h2 {
+    margin:  1vw 1vw 1.5vw 1vw;
+    align-self: center;
+}
+
+.formElements {
+    font-family: "Comfortaa", cursive;
+    display: flex;
+    height: 55%;
+    width: 100%;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input {
+    display: flex;
+    height: 9vh;
+    width: 100%;
     color: white;
     text-align: center;
     font-family: "Comfortaa", cursive;
     font-size: 1.2rem;
-    display: flex;
-    justify-content: center;
-    flex-flow: column;
-    align-items: flex-end;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.btn{
+.btn {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    height: 4vh;
-    width: 52%;
+    height: 5vh;
+    width: 50%;
     margin: 1vh;
 }
-.coment{
+
+.comment {
     font-size: 0.8rem;
     text-align: left;
 }

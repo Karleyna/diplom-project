@@ -5,14 +5,13 @@ import {
     MAIN_ROUTE, MEDICAL_ROUTE,
     REGISTRATION_ROUTE,
     STUDENT_ROUTE,
-    TRAINER_ROUTE,
+    TRAINER_ROUTE, UPDATE_ROUTE,
     USEFUL_ROUTE
 } from "../utils/consts";
 import trainerPage from "../pages/TrainerPage/TrainerPage"
 import mainPage from "../pages/MainPage/MainPage";
 import studentPage from "../pages/StudentPage/StudentPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
-import registrationPage from "../pages/RegistrationPage/RegistrationPage";
 import usefulPage from "../pages/UsefulPage/UsefulPage";
 import medicalPage from "../pages/MedicalPage/MedicalPage";
 
@@ -43,7 +42,7 @@ export const publicRoutes = [
     },
     {
         path: REGISTRATION_ROUTE,
-        Component: registrationPage
+        Component: LoginPage
     },
     {
         path: USEFUL_ROUTE,
@@ -53,5 +52,8 @@ export const publicRoutes = [
         path: MEDICAL_ROUTE,
         Component: medicalPage
     },
-
+    {
+        path: UPDATE_ROUTE,
+        Component: medicalPage
+    },
 ]
