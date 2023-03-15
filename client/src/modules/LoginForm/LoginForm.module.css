@@ -1,4 +1,4 @@
-.test {
+.fomLog {
     background: #1D3436;
     height: 50vh;
     width: 45vw;
@@ -9,6 +9,9 @@
     flex-flow: column;
     align-items: center;
     justify-content: center;
+}
+.formReg{
+
 }
 
 h2 {

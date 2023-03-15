@@ -8,8 +8,15 @@ import {observer} from "mobx-react-lite";
 import Navbar from "react-bootstrap/Navbar";
 
 
+
 const Header = observer(() => {
     const {user} = useContext(Context);
+    const logOut = () =>{
+        user.setUser(null);
+        user.setIsAuth(false);
+        alert("Всего доброго");
+        localStorage.clear();
+    }
     return (
         <Navbar className="header">
                 <div className="catalog-header">
@@ -22,7 +29,7 @@ const Header = observer(() => {
                         {user.isAuth ?
                             <nav className="catalog-navigation-buttons">
                                 <MyLink to='/login'>Admin</MyLink>
-                                <MyLink to='/'>Exit</MyLink>
+                                <MyLink onClick={()=>logOut()} to='/'>Exit</MyLink>
                             </nav>
                             :
                             <nav className="catalog-navigation-buttons">

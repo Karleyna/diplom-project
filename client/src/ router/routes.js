@@ -11,9 +11,10 @@ import {
 import trainerPage from "../pages/TrainerPage/TrainerPage"
 import mainPage from "../pages/MainPage/MainPage";
 import studentPage from "../pages/StudentPage/StudentPage";
-import LoginPage from "../pages/LoginPage/LoginPage";
+import LoginPage from "../pages/LoginPages/LoginPage";
 import usefulPage from "../pages/UsefulPage/UsefulPage";
 import medicalPage from "../pages/MedicalPage/MedicalPage";
+import registrationPage from "../pages/LoginPages/RegistrationPage";
 
 
 export const authRoutes = [
@@ -38,11 +39,11 @@ export const publicRoutes = [
     },
     {
         path: LOGIN_ROUTE,
-        Component: LoginPage,
+        Component: LoginPage
     },
     {
         path: REGISTRATION_ROUTE,
-        Component: LoginPage
+        Component: registrationPage
     },
     {
         path: USEFUL_ROUTE,
