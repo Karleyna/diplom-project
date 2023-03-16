@@ -11,7 +11,16 @@
     justify-content: center;
 }
 .formReg{
-
+    background: #1D3436;
+    width: 38vw;
+    padding: 1.5vw;
+    color: white;
+    border: white solid;
+    border-radius: 20px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
 }
 
 h2 {

@@ -40,6 +40,7 @@ const LoginForm = observer(() => {
                             <MyInput value={email} onChange={e => setEmail(e.target.value)}
                                      placeholder={"Введите Ваш Email.."}></MyInput></div>
                     </label>
+
                     <label className={classes.input}>
                         <div style={{width: "28vw"}}>
                             <MyInput value={password} onChange={e => setPassword(e.target.value)} type="password"
