@@ -10,7 +10,7 @@ const User = sequelize.define('user', {
     FIO: {type: DataTypes.TEXT},
     password: {type: DataTypes.STRING},
     telephone: {type: DataTypes.STRING},
-    dateOfBirth: {type: DataTypes.DATE, DateStyle: "DMY"}
+    age:{type:DataTypes.INTEGER}
 
 });
 
