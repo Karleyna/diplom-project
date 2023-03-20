@@ -1,7 +1,21 @@
 .form{
+    background: #1D3436;
+    border-radius: 20px;
+    padding-top: 1.5vh;
+    width: 45vw;
+    height: 50vh;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-flow: column;
+}
+.form h1{
+    font-size: 3rem;
+}
+.page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
 }

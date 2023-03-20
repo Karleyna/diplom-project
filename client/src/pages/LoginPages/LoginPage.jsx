@@ -5,8 +5,8 @@ import classes from "./LoginPage.module.css"
 
 const LoginPage = () => {
     return (
-        <div>
-            <div className={classes.form}>
+        <div className={classes.page}>
+            <div>
                 <LoginForm>
                 </LoginForm>
             </div>

@@ -12,15 +12,30 @@
 }
 .formReg{
     background: #1D3436;
-    width: 38vw;
+    width: 40vw;
+    height: 45vh;
     padding: 1.5vw;
     color: white;
-    border: white solid;
     border-radius: 20px;
     display: flex;
     flex-flow: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+}
+.elemReg{
+    font-family: "Comfortaa", cursive;
+    display: flex;
+    height: 85%;
+    width: 90%;
+    align-items: center;
+    justify-content: space-around;
+}
+.divElemReg{
+    display: flex;
+    height: 100%;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 h2 {
@@ -61,4 +76,5 @@ h2 {
 .comment {
     font-size: 0.8rem;
     text-align: left;
+    width: 90%;
 }

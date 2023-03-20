@@ -14,7 +14,7 @@ const generateJwt = (id, email, role) => {
 class UserController {
     async registration(req, res, next) {
         let id = uuid.v4();
-        const {email, password, role} = req.body;
+        const {email, password, role, ...args} = req.body;
         if (!email || !password) {
             return next(ApiError.badRequest('Invalid email or password'));
         }
@@ -23,8 +23,8 @@ class UserController {
             return next(ApiError.badRequest('User with this email already exists'));
         }
         const hashPassword = await bcrypt.hash(password, 4);
-        const user = await User.create({id, email, role, password: hashPassword});
-        const token = generateJwt(user.id, user.email, user.role);
+        const user = await User.create({id, email, role, password: hashPassword, ...args});
+        const token = generateJwt(user.id, user.email, user.role, user.args);
         return res.json({token});
     }
 
