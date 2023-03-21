@@ -12,6 +12,7 @@
 }
 .formReg{
     background: #1D3436;
+    font-family: "Comfortaa", cursive;
     width: 40vw;
     height: 45vh;
     padding: 1.5vw;
@@ -23,16 +24,9 @@
     justify-content: space-around;
 }
 .elemReg{
-    font-family: "Comfortaa", cursive;
     display: flex;
-    height: 85%;
+    height: 80%;
     width: 90%;
-    align-items: center;
-    justify-content: space-around;
-}
-.divElemReg{
-    display: flex;
-    height: 100%;
     flex-flow: column;
     align-items: center;
     justify-content: space-around;

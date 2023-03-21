@@ -14,17 +14,17 @@ const generateJwt = (id, email, role) => {
 class UserController {
     async registration(req, res, next) {
         let id = uuid.v4();
-        const {email, password, role, ...args} = req.body;
+        const {email, password, role} = req.body;
         if (!email || !password) {
-            return next(ApiError.badRequest('Invalid email or password'));
+            return next(ApiError.badRequest('Empty email or password'));
         }
         const candidate = await User.findOne({where: {email}});
         if (candidate) {
             return next(ApiError.badRequest('User with this email already exists'));
         }
         const hashPassword = await bcrypt.hash(password, 4);
-        const user = await User.create({id, email, role, password: hashPassword, ...args});
-        const token = generateJwt(user.id, user.email, user.role, user.args);
+        const user = await User.create({id, email, role, password: hashPassword});
+        const token = generateJwt(user.id, user.email, user.role);
         return res.json({token});
     }
 
