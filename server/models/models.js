@@ -13,8 +13,42 @@ const User = sequelize.define('user', {
     age:{type:DataTypes.INTEGER}
 
 });
+const Posts = sequelize.define('posts', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING, unique: true, allowNull: false},
+    img: {type: DataTypes.STRING, allowNull: true},
+});
+
+const Category = sequelize.define('category', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING, unique: true, allowNull: false},
+});
+
+const PostInfo = sequelize.define('post_info', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    title: {type: DataTypes.STRING, allowNull: false},
+    description: {type: DataTypes.STRING, allowNull: false},
+});
+ const Certificate = sequelize.define( 'certificate', {
+     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+     title: {type: DataTypes.STRING, allowNull: false}
+ });
+
+Category.hasMany(Posts);
+Posts.belongsTo(Category);
+
+User.hasMany(Certificate);
+Certificate.belongsTo(User);
+
+Posts.hasMany(PostInfo, {as: 'info'});
+PostInfo.belongsTo(Posts);
+
 
 
 module.exports = {
-    User
+    User,
+    Posts,
+    Category,
+    PostInfo,
+    Certificate
 }
