@@ -11,7 +11,6 @@ import MyLink from "../../ui/links/MyLink";
 const MainPage = () =>
 {
     return <>
-
         <body>
             <main>
                 <section className="heading">
@@ -120,9 +119,9 @@ const MainPage = () =>
                     </section>
                     <section className="map-block">
                         <h2>Наше местоположение:</h2>
-                        <div className="map">
-                            <Map/>
-                        </div>
+                        {/*<div className="map">*/}
+                        {/*    <Map/>*/}
+                        {/*</div>*/}
                         <div className="text-address">
                             <p>Очные занятия проходят по адресу:</p>
                             <p>

@@ -8,7 +8,7 @@ import {MAIN_ROUTE, REGISTRATION_ROUTE} from "../../utils/consts";
 import {login} from "../../http/userAPI";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
-import jwtDecode from "jwt-decode";
+
 
 
 const LoginForm = observer(() => {
@@ -25,7 +25,7 @@ const LoginForm = observer(() => {
             user.setUser(data);
             user.setIsAuth(true);
             history(MAIN_ROUTE);
-            alert(`Добро пожаловать ${(email)}!`);
+            alert(`Добро пожаловать ${user.role}!`);
         } catch (e) {
             alert(e.response.data.message)
         }

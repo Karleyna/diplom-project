@@ -1,11 +1,14 @@
 import React from 'react';
+import CategoryRow from "../../modules/CategoryRow/CategoryRow";
+import {observer} from "mobx-react";
 
-const UsefulPage = () => {
+const UsefulPage = observer(() => {
     return (
         <div>
-            UsefulPage
+            <h1>USEFUL PAGE</h1>
+            <CategoryRow/>
         </div>
     );
-};
+})
 
 export default UsefulPage;

@@ -1,0 +1,30 @@
+.page{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    flex-flow: column;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+    background: linear-gradient(rgba(16, 41, 42, 1), transparent);
+    font-family: 'Yeseva One', serif;
+    color: white;
+    width: 100%;
+    height: 25vh;
+}
+
+.panel{
+    display: flex;
+    height: 50vh ;
+    width: 45vw;
+    align-items: center;
+    justify-content: space-around;
+    flex-flow: column;
+}
+.panel div{
+    height: 8vh;
+    width: 100%;
+}

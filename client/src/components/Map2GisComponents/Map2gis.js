@@ -1,3 +1,4 @@
+import React, { Component }  from 'react';
 import { load } from '@2gis/mapgl';
 import {useEffect} from "react";
 import MapWrapper from './MapWrapper.js'
@@ -22,11 +23,11 @@ export const Map = () => {
         return () => map && map.destroy();
     }, []);
 
-    return (
+    return <>
         <div style={{ width: '100%', height: '100%'}}>
             <MapWrapper />
         </div>
-    );
+    </>
 };
 
 

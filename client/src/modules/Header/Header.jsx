@@ -2,14 +2,23 @@ import React, {useContext} from 'react';
 import "./Header.css"
 import icon from "../../ui/PicturesForUI/iwsd icon.png";
 import MyLink from "../../ui/links/MyLink";
-import {MAIN_ROUTE} from "../../utils/consts";
+import {
+    ADMIN_ROUTE,
+    LOGIN_ROUTE,
+    MAIN_ROUTE,
+    MEDICAL_ROUTE,
+    PERSONAL_ROUTE,
+    TRAINER_ROUTE,
+    USEFUL_ROUTE
+} from "../../utils/consts";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import Navbar from "react-bootstrap/Navbar";
-
+import {useNavigate} from "react-router-dom";
 
 
 const Header = observer(() => {
+    const navigate = useNavigate();
     const {user} = useContext(Context);
     const logOut = () =>{
         user.setUser(null);
@@ -28,12 +37,16 @@ const Header = observer(() => {
                         </div>
                         {user.isAuth ?
                             <nav className="catalog-navigation-buttons">
-                                <MyLink to='/login'>Admin</MyLink>
+                                <MyLink to={ADMIN_ROUTE} >Admin</MyLink>
+                                <MyLink to={TRAINER_ROUTE} >Trainer</MyLink>
+                                <MyLink to={USEFUL_ROUTE} >Useful page</MyLink>
+                                <MyLink to={PERSONAL_ROUTE} >Personal cabinet</MyLink>
                                 <MyLink onClick={()=>logOut()} to='/'>Exit</MyLink>
                             </nav>
                             :
                             <nav className="catalog-navigation-buttons">
-                                <MyLink to='/login' >Войти</MyLink>
+                                <MyLink to={MEDICAL_ROUTE} >Medical</MyLink>
+                                <MyLink to={LOGIN_ROUTE} >Войти</MyLink>
                             </nav>
                         }
                     </div>

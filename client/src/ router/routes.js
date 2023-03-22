@@ -2,19 +2,18 @@ import adminPage from "../pages/AdminPage/AdminPage";
 import {
     ADMIN_ROUTE,
     LOGIN_ROUTE,
-    MAIN_ROUTE, MEDICAL_ROUTE,
+    MAIN_ROUTE, MEDICAL_ROUTE, PERSONAL_ROUTE,
     REGISTRATION_ROUTE,
-    STUDENT_ROUTE,
-    TRAINER_ROUTE, UPDATE_ROUTE,
+    TRAINER_ROUTE,
     USEFUL_ROUTE
 } from "../utils/consts";
 import trainerPage from "../pages/TrainerPage/TrainerPage"
 import mainPage from "../pages/MainPage/MainPage";
-import studentPage from "../pages/StudentPage/StudentPage";
 import LoginPage from "../pages/LoginPages/LoginPage";
 import usefulPage from "../pages/UsefulPage/UsefulPage";
 import medicalPage from "../pages/MedicalPage/MedicalPage";
 import registrationPage from "../pages/LoginPages/RegistrationPage";
+import PersonalPage from "../pages/PersonalPage/PersonalPage";
 
 
 export const authRoutes = [
@@ -27,9 +26,13 @@ export const authRoutes = [
         Component: trainerPage
     },
     {
-        path: STUDENT_ROUTE,
-        Component: studentPage
+        path: PERSONAL_ROUTE,
+        Component: PersonalPage
     },
+    {
+        path: USEFUL_ROUTE,
+        Component: usefulPage
+    }
 
 ]
 export const publicRoutes = [
@@ -46,15 +49,7 @@ export const publicRoutes = [
         Component: registrationPage
     },
     {
-        path: USEFUL_ROUTE,
-        Component: usefulPage
-    },
-    {
         path: MEDICAL_ROUTE,
         Component: medicalPage
-    },
-    {
-        path: UPDATE_ROUTE,
-        Component: medicalPage
-    },
+    }
 ]
