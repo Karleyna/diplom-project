@@ -13,18 +13,18 @@ export const fetchCategories = async () => {
 
 
 export const createPost = async (post) => {
-    const {data} = await $authHost.post('api/post', post)
+    const {data} = await $authHost.post('api/posts', post)
     return data
 }
 
 export const fetchPosts = async (categoryId, page, limit= 5) => {
-    const {data} = await $host.get('api/post', {params: {
+    const {data} = await $host.get('api/posts', {params: {
             categoryId, page, limit
         }})
     return data
 }
 
 export const fetchOnePost = async (id) => {
-    const {data} = await $host.get('api/post/' + id)
+    const {data} = await $host.get('api/posts/' + id)
     return data
 }

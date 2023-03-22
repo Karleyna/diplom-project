@@ -1,8 +1,9 @@
 import React, {useContext} from 'react';
 import {observer} from "mobx-react-lite";
-import {Context} from "../index";
 import {Form} from "react-bootstrap";
-import PostItem from "./postItem";
+import PostItem from "./PostItem";
+import {Context} from "../../../index";
+
 
 const PostList = observer(() => {
     const {post} = useContext(Context);

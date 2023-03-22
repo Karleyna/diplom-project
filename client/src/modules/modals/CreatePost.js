@@ -10,7 +10,7 @@ const CreatePost = observer(({show, onHide}) => {
     const [name, setName] = useState('')
     const [file, setFile] = useState(null)
     const [info, setInfo] = useState([])
-    const [category, setCategory] = useState(null);
+
 
     useEffect(() => {
         fetchCategories().then(data => post.setCategories(data));

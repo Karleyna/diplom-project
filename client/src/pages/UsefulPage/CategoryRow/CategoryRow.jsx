@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {observer} from "mobx-react-lite";
-import {Context} from "../../index";
+import {Context} from "../../../index";
 import {ListGroup} from "react-bootstrap";
 
 const CategoryRow = observer(() => {
@@ -16,7 +16,9 @@ const CategoryRow = observer(() => {
                 >
                     {category.name}
                 </ListGroup.Item>
+
             )}
+            <ListGroup.Item>Cras justo odio</ListGroup.Item>
 
         </ListGroup>
     </>
