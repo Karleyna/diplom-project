@@ -1,9 +1,14 @@
 import React, {useContext, useEffect, useState} from 'react';
-import Modal from "react-bootstrap/Modal";
 import {Button, Dropdown, Form, Row, Col} from "react-bootstrap";
 import {Context} from "../../index";
 import {createPost,  fetchPosts, fetchCategories} from "../../http/postAPI";
 import {observer} from "mobx-react-lite";
+import Modal from "../../ui/Modal/Modal";
+import MyInput from "../../ui/inputs/MyInput";
+import MyButton from "../../ui/buttons/MyButton";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import classes from "./CreatePost.module.css";
+
 
 const CreatePost = observer(({show, onHide}) => {
     const {post} = useContext(Context)
@@ -14,10 +19,11 @@ const CreatePost = observer(({show, onHide}) => {
 
     useEffect(() => {
         fetchCategories().then(data => post.setCategories(data));
-        fetchPosts().then(data => post.setPosts(data));
+        // fetchPosts().then(data => post.setPosts(data));
     }, [])
 
-    const addInfo = () => {
+    const addInfo = (e) => {
+        e.preventDefault();
         setInfo([...info, {title: '', description: '', number: Date.now()}])
     }
     const removeInfo = (number) => {
@@ -42,81 +48,85 @@ const CreatePost = observer(({show, onHide}) => {
 
     return (
         <Modal
-            show={show}
-            onHide={onHide}
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
+            active={show}
+            setActive={onHide}>
+            <section>
+                <h2 className={classes}>
                     Добавить пост
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
+                </h2>
+            </section>
+            <section>
                 <Form>
-                    <Dropdown className="mt-2 mb-2">
-                        <Dropdown.Toggle>{post.selectedCategory.name || "Выберите раздел"}</Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            {post.categories.map(category =>
-                                <Dropdown.Item
-                                    onClick={() => post.setSelectedCategory(category)}
-                                    key={category.id}
-                                >
-                                    {category.name}
-                                </Dropdown.Item>
-                            )}
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    <Form.Control
+                    <section >
+                        <Dropdown className="mt-2 mb-2">
+                            <Dropdown.Toggle variant="success">{post.selectedCategory.name || "Выберите категорию"}</Dropdown.Toggle>
+                            <Dropdown.Menu >
+                                {post.categories.map(category =>
+                                    <Dropdown.Item
+                                        onClick={() => post.setSelectedCategory(category)}
+                                        key={category.id}
+                                    >
+                                        {category.name}
+                                    </Dropdown.Item>
+                                )}
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </section>
+                   
+                    <MyInput
+                        style={{ width:'100%'}}
                         value={name}
                         onChange={e => setName(e.target.value)}
-                        className="mt-3"
                         placeholder="Введите заголовок поста"
                     />
-
                     <Form.Control
-                        className="mt-3"
-                        category="file"
+                        className="mt-3 mr-3"
+                        type="file"
                         onChange={selectFile}
                     />
                     <hr/>
-                    <Button
-                        variant={"outline-dark"}
-                        onClick={addInfo}
-                    >
-                        Добавить новый материал
-                    </Button>
+                    <div className={classes.sectionBut} >
+                        <MyButton
+                           style={{fontSize:'1rem'}}
+                            onClick={addInfo}
+                        >
+                            Добавить новый материал
+                        </MyButton>
+                    </div>
+
                     {info.map(i =>
-                        <Row className="mt-4" key={i.number}>
-                            <Col md={4}>
-                                <Form.Control
+                        <section className={classes.newMaterial} key={i.number}>
+                            <Col md={3.5}>
+                                <MyInput
                                     value={i.title}
                                     onChange={(e) => changeInfo('title', e.target.value, i.number)}
-                                    placeholder="Введите название подзаголовка/подпункта"
+                                    placeholder="Введите название подзаголовка"
                                 />
                             </Col>
-                            <Col md={4}>
+                            <Col md={6}>
                                 <Form.Control
+                                    as="textarea"
                                     value={i.description}
                                     onChange={(e) => changeInfo('description', e.target.value, i.number)}
                                     placeholder="Введите текст"
                                 />
                             </Col>
-                            <Col md={4}>
-                                <Button
+                            <Col className={classes.delBtn} md={3}>
+                                <MyButton
+                                    style={{fontSize:'1rem'}}
                                     onClick={() => removeInfo(i.number)}
-                                    variant={"outline-danger"}
                                 >
                                     Удалить
-                                </Button>
+                                </MyButton>
                             </Col>
-                        </Row>
+                        </section>
                     )}
                 </Form>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
-                <Button variant="outline-success" onClick={addPost}>Добавить</Button>
-            </Modal.Footer>
+            </section>
+            <section className={classes.section}>
+                <Button  variant="outline-danger" onClick={onHide}>Закрыть</Button>
+                <Button  variant="outline-success" onClick={addPost}>Добавить</Button>
+            </section>
         </Modal>
     );
 });

@@ -5,6 +5,8 @@ import classes from "./UsefulPage.module.css";
 import {fetchCategories, fetchPosts} from "../../http/postAPI";
 import PostList from "./PostElems/PostList";
 import {Context} from "../../index";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Pages from "../../modules/Pages";
 
 const UsefulPage = observer(() => {
     const {post} = useContext(Context)
@@ -30,6 +32,7 @@ const UsefulPage = observer(() => {
                 <h1>USEFUL PAGE</h1>
                 <CategoryRow/>
                 <PostList/>
+                <Pages/>
             </div>
         </>
 

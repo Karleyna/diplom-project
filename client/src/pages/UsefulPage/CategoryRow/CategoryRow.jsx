@@ -18,8 +18,6 @@ const CategoryRow = observer(() => {
                 </ListGroup.Item>
 
             )}
-            <ListGroup.Item>Cras justo odio</ListGroup.Item>
-
         </ListGroup>
     </>
 });

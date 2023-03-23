@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="footer">
             <div className="content">
                 <div className="contacts">
-                   <h1 className="title">Наши контакты</h1>
+                   <h1>Наши контакты</h1>
                     <div className="text">
                         <p>Телефоны:</p>
                         <p>+79045746021 (Новосибирск)</p>
@@ -31,11 +31,11 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="mail">
-                    <h1 className="title">Свяжитесь с нами</h1>
+                    <h1>Свяжитесь с нами</h1>
                     <div className="inputs">
-                            <input type="name" className="name" placeholder=" Ваше имя"/>
-                            <input type="telephone" className="telephone" placeholder=" Ваш телефон"/>
-                            <textarea type="message" className="message" placeholder=" Ваше сообщение"></textarea>
+                        <input type="name"  placeholder=" Ваше имя"/>
+                        <input type="telephone" placeholder=" Ваш телефон"/>
+                        <textarea type="message" placeholder=" Ваше сообщение"></textarea>
                     </div>
                 </div>
             </div>

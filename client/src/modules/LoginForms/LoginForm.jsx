@@ -25,7 +25,6 @@ const LoginForm = observer(() => {
             user.setUser(data);
             user.setIsAuth(true);
             history(MAIN_ROUTE);
-            alert(`Добро пожаловать ${user.role}!`);
         } catch (e) {
             alert(e.response.data.message)
         }

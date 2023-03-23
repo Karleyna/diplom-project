@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Oswald:wght@200&family=Yeseva+One&display=swap');
 
-body{
+.body{
     background: rgba(227, 255, 254, 1);
     z-index: 0;
 }

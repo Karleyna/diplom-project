@@ -11,7 +11,7 @@ import MyLink from "../../ui/links/MyLink";
 const MainPage = () =>
 {
     return <>
-        <body>
+        <div className="body">
             <main>
                 <section className="heading">
                     <div className="text-heading">
@@ -131,7 +131,7 @@ const MainPage = () =>
                     </section>
                 </section>
             </main>
-        </body>
+        </div>
     </>
 
 }; export default MainPage;

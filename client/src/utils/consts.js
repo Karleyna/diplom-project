@@ -5,5 +5,5 @@ export const LOGIN_ROUTE='/login';
 export const REGISTRATION_ROUTE='/registration';
 export const MEDICAL_ROUTE='/medical';
 export const USEFUL_ROUTE='/useful';
-export const POST_ROUTE='/post';
+export const POST_ROUTE='/posts';
 export const MAIN_ROUTE='/';
