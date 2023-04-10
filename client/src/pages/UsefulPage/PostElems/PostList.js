@@ -9,7 +9,7 @@ const PostList = observer(() => {
     const {post} = useContext(Context);
 
     return <>
-        <Row className="d-flex">
+        <Row className="d-flex" style={{justifyContent: 'space-around'}}>
             {post.posts.map(post =>
                 <PostItem key={post.id} post={post}/>
             )}

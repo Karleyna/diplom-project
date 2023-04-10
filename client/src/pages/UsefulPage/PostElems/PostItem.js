@@ -3,7 +3,7 @@ import Image from "react-bootstrap/Image";
 import {useNavigate} from "react-router-dom"
 import {POST_ROUTE} from "../../../utils/consts";
 import {Card, Col} from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import {fetchOnePost} from "../../../http/postAPI";
 
 

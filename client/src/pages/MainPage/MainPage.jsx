@@ -1,16 +1,13 @@
-import React from "react"
-import icon from "../../ui/PicturesForUI/iwsd icon.png";
-import Header from "../../modules/Header/Header";
-import Footer from "../../modules/Footer/Footer";
+import React from "react";
 import "./MainPage.css";
-import {Map} from "../../components/Map2GisComponents/Map2gis";
-import MyLink from "../../ui/links/MyLink";
 
 
 
 const MainPage = () =>
 {
+
     return <>
+
         <div className="body">
             <main>
                 <section className="heading">
@@ -119,9 +116,12 @@ const MainPage = () =>
                     </section>
                     <section className="map-block">
                         <h2>Наше местоположение:</h2>
-                        {/*<div className="map">*/}
-                        {/*    <Map/>*/}
-                        {/*</div>*/}
+                        <div className="map">
+                           <div>
+                               <img src="../../../public/screenMap.png" alt="error"/>
+
+                           </div>
+                        </div>
                         <div className="text-address">
                             <p>Очные занятия проходят по адресу:</p>
                             <p>

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Card, Col, Container, Image, Form, Row} from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import {useParams} from 'react-router-dom'
 import {fetchOnePost} from "../../../http/postAPI";
 import classes from "./PostPage.module.css";
@@ -25,10 +25,10 @@ const PostPage = () => {
                 </div>
             </div>
         </section>
-        <section style={{width:'80%'}}>
+        <section style={{width:'100%'}} className={classes.img}>
             <h1>Описание</h1>
             {post.info.map((info, index) =>
-                <Row key={info.id} style={{background: index % 2 === 0 ? 'lightgray' : 'transparent', padding: 10}}>
+                <Row key={info.id} style={{background: index % 2 === 0 ? 'lightgray' : 'transparent', padding: 10, width:'70%'}}>
                     {info.title}: {info.description}
                 </Row>
             )}

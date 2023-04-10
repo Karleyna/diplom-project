@@ -5,7 +5,7 @@ import classes from "./UsefulPage.module.css";
 import {fetchCategories, fetchPosts} from "../../http/postAPI";
 import PostList from "./PostElems/PostList";
 import {Context} from "../../index";
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Pages from "../../modules/Pages";
 
 const UsefulPage = observer(() => {
@@ -13,7 +13,7 @@ const UsefulPage = observer(() => {
 
     useEffect(() => {
         fetchCategories().then(data => post.setCategories(data))
-        fetchPosts(null,  1, 2).then(data => {
+        fetchPosts(null, 1, 2).then(data => {
             post.setPosts(data.rows)
             post.setTotalCount(data.count)
         })
@@ -28,14 +28,18 @@ const UsefulPage = observer(() => {
 
 
     return <>
-            <div className={classes.main}>
-                <h1>USEFUL PAGE</h1>
-                <CategoryRow/>
+        <div className={classes.main}>
+            <h1 style={{color:'white'}}>USEFUL PAGE</h1>
+            <CategoryRow/>
+            <div className={classes.menu}>
                 <PostList/>
-                <Pages/>
             </div>
-        </>
 
- });
+
+            <Pages/>
+        </div>
+    </>
+
+});
 
 export default UsefulPage;

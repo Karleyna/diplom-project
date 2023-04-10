@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Button, Dropdown, Form, Row, Col} from "react-bootstrap";
 import {Context} from "../../index";
-import {createPost,  fetchPosts, fetchCategories} from "../../http/postAPI";
+import {createPost, fetchPosts, fetchCategories} from "../../http/postAPI";
 import {observer} from "mobx-react-lite";
 import Modal from "../../ui/Modal/Modal";
 import MyInput from "../../ui/inputs/MyInput";
@@ -13,9 +13,9 @@ import classes from "./CreatePost.module.css";
 const CreatePost = observer(({show, onHide}) => {
     const {post} = useContext(Context)
     const [name, setName] = useState('')
-    const [file, setFile] = useState(null)
+    const [fileImg, setFileImg] = useState(null)
     const [info, setInfo] = useState([])
-
+    const [file,setFile] = useState(null);
 
     useEffect(() => {
         fetchCategories().then(data => post.setCategories(data));
@@ -24,7 +24,7 @@ const CreatePost = observer(({show, onHide}) => {
 
     const addInfo = (e) => {
         e.preventDefault();
-        setInfo([...info, {title: '', description: '', number: Date.now()}])
+        setInfo([...info, {title: '', description: '', number: Date.now(), file:selectFile}])
     }
     const removeInfo = (number) => {
         setInfo(info.filter(i => i.number !== number))
@@ -32,15 +32,18 @@ const CreatePost = observer(({show, onHide}) => {
     const changeInfo = (key, value, number) => {
         setInfo(info.map(i => i.number === number ? {...i, [key]: value} : i))
     }
+    const selectFile  = e =>{
+        setFile(e.target.files[0]);
+    }
 
-    const selectFile = e => {
-        setFile(e.target.files[0])
+    const selectFileImg = e => {
+        setFileImg(e.target.files[0])
     }
 
     const addPost = () => {
         const formData = new FormData()
         formData.append('name', name)
-        formData.append('img', file)
+        formData.append('img', fileImg)
         formData.append('categoryId', post.selectedCategory.id)
         formData.append('info', JSON.stringify(info))
         createPost(formData).then(data => onHide())
@@ -57,10 +60,11 @@ const CreatePost = observer(({show, onHide}) => {
             </section>
             <section>
                 <Form>
-                    <section >
+                    <section>
                         <Dropdown className="mt-2 mb-2">
-                            <Dropdown.Toggle variant="success">{post.selectedCategory.name || "Выберите категорию"}</Dropdown.Toggle>
-                            <Dropdown.Menu >
+                            <Dropdown.Toggle
+                                variant="success">{post.selectedCategory.name || "Выберите категорию"}</Dropdown.Toggle>
+                            <Dropdown.Menu>
                                 {post.categories.map(category =>
                                     <Dropdown.Item
                                         onClick={() => post.setSelectedCategory(category)}
@@ -72,9 +76,9 @@ const CreatePost = observer(({show, onHide}) => {
                             </Dropdown.Menu>
                         </Dropdown>
                     </section>
-                   
+
                     <MyInput
-                        style={{ width:'100%'}}
+                        style={{width: '100%'}}
                         value={name}
                         onChange={e => setName(e.target.value)}
                         placeholder="Введите заголовок поста"
@@ -82,12 +86,12 @@ const CreatePost = observer(({show, onHide}) => {
                     <Form.Control
                         className="mt-3 mr-3"
                         type="file"
-                        onChange={selectFile}
+                        onChange={selectFileImg}
                     />
                     <hr/>
-                    <div className={classes.sectionBut} >
+                    <div className={classes.sectionBut}>
                         <MyButton
-                           style={{fontSize:'1rem'}}
+                            style={{fontSize: '1rem'}}
                             onClick={addInfo}
                         >
                             Добавить новый материал
@@ -96,14 +100,14 @@ const CreatePost = observer(({show, onHide}) => {
 
                     {info.map(i =>
                         <section className={classes.newMaterial} key={i.number}>
-                            <Col md={3.5}>
+                            <Col md={3}>
                                 <MyInput
                                     value={i.title}
                                     onChange={(e) => changeInfo('title', e.target.value, i.number)}
                                     placeholder="Введите название подзаголовка"
                                 />
                             </Col>
-                            <Col md={6}>
+                            <Col md={5}>
                                 <Form.Control
                                     as="textarea"
                                     value={i.description}
@@ -111,21 +115,29 @@ const CreatePost = observer(({show, onHide}) => {
                                     placeholder="Введите текст"
                                 />
                             </Col>
-                            <Col className={classes.delBtn} md={3}>
+                            <Col className={classes.delBtn} md={2.5}>
                                 <MyButton
-                                    style={{fontSize:'1rem'}}
+                                    style={{fontSize: '1rem'}}
                                     onClick={() => removeInfo(i.number)}
                                 >
                                     Удалить
                                 </MyButton>
+
+                            </Col>
+                            <Col md={3}>
+                                <Form.Control
+                                    className="mt-3 mr-3"
+                                    type="file"
+                                    onChange={selectFile}
+                                />
                             </Col>
                         </section>
                     )}
                 </Form>
             </section>
             <section className={classes.section}>
-                <Button  variant="outline-danger" onClick={onHide}>Закрыть</Button>
-                <Button  variant="outline-success" onClick={addPost}>Добавить</Button>
+                <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
+                <Button variant="outline-success" onClick={addPost}>Добавить</Button>
             </section>
         </Modal>
     );

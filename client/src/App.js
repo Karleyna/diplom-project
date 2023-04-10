@@ -6,7 +6,7 @@ import {Context} from "./index";
 import {observer} from "mobx-react-lite";
 import {check} from "./http/userAPI";
 import {Spinner} from "react-bootstrap";
-import "./ui/image-cat-unscreen.gif"
+
 
 const App = observer(() => {
     const {user} = useContext(Context);

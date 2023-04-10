@@ -1,8 +1,17 @@
 .main{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-flow: column;
     height: 100vh;
     width: 100vw;
+    background: linear-gradient(rgba(16, 41, 42, 1), transparent);
+}
+h1{
+ font-family: 'Yeseva One', serif;
+}
+.menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
