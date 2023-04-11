@@ -1,6 +1,6 @@
 import React from "react";
 import "./MainPage.css";
-
+import map from  "./screenMap.png";
 
 
 const MainPage = () =>
@@ -118,7 +118,7 @@ const MainPage = () =>
                         <h2>Наше местоположение:</h2>
                         <div className="map">
                            <div>
-                               <img src="../../../public/screenMap.png" alt="error"/>
+                               <img className="map" src={map} alt="error"/>
 
                            </div>
                         </div>

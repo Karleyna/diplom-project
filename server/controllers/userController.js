@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {User, UserInfo} = require('../models/models');
 
+
 const generateJwt = (id, email, role) => {
     return jwt.sign({id, email, role},
         process.env.SECRET_KEY,
@@ -39,12 +40,48 @@ class UserController {
             return next(ApiError.internal('Invalid password!'));
         }
         const token = generateJwt(user.id, user.password, user.role);
-            return res.json({token});
+        return res.json({token});
     }
 
     async check(req, res, next) {
         const token = generateJwt(req.user.id, req.user.email, req.user.role);
         return res.json({token});
+    }
+    async getAll(req, res){
+        try {
+            const users = await User.findAndCountAll();
+            return res.json(users);
+        } catch (e) {
+            res.status(500).json(e)
+        }
+    }
+    async getOne(req,res){}
+
+    async update(req, res) {
+        try {
+            const user = req.body;
+            if (!user.id) {
+                res.status(400).json({message:"ID не указан"});
+            }
+            const updatedUser = await User.update( user, {where: {id: user.id}});
+            return res.json(updatedUser);
+        } catch (e) {
+            res.status(500).json(e.message)
+        }
+    }
+
+    async delete(req, res) {
+        try {
+            // const {id} = req.params;
+            // if (!id) {
+            //     res.status(400).json({message:"ID не указан"});
+            // }
+            const user = await User.destroy({where:{id: req.params.id}});
+            return res.json(user);
+
+        } catch (e) {
+            res.status(500).json(e)
+        }
     }
 }
 

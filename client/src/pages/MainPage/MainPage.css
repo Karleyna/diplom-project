@@ -147,6 +147,9 @@ a:hover {
     width: 19vw;
     height: 50vh;
 }
+.trainer-item:hover{
+    color: white;
+}
 .trainer-photo{
     height: 200px;
     width: 200px;
@@ -270,10 +273,11 @@ ol li{
 }
 .map{
     width: 55vw;
-    height: 50vh;
+    height: 55vh;
     /*border*/
 }
 .text-address{
+    margin-top: 2vh;
     text-align: center;
     width: 55vw;
     height: 8vh;

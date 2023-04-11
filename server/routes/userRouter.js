@@ -8,6 +8,9 @@ router.post('/registration', userController.registration);
 router.post('/registration-trainer',checkRoleMiddleware('admin'), userController.registration);
 router.post('/login', userController.login);
 router.get('/auth', authMiddleware, userController.check);
+router.get('/users', userController.getAll);
+router.put('/users', userController.update);
+router.delete('/users/:id', userController.delete);
 
 
 module.exports = router;
