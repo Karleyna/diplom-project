@@ -47,7 +47,8 @@ class UserController {
         const token = generateJwt(req.user.id, req.user.email, req.user.role);
         return res.json({token});
     }
-    async getAll(req, res){
+
+    async getAll(req, res) {
         try {
             const users = await User.findAndCountAll();
             return res.json(users);
@@ -55,15 +56,29 @@ class UserController {
             res.status(500).json(e)
         }
     }
-    async getOne(req,res){}
+
+    async getOne(req, res) {
+        try {
+            const {id} = req.params;
+            if (!id) {
+                res.status(400).json({message:"ID не указан"});
+            }
+            const user = await User.findByPk(id);
+            return res.json(user);
+        }
+        catch (e) {
+            res.status(500).json(e.message)
+        }
+
+    }
 
     async update(req, res) {
         try {
             const user = req.body;
             if (!user.id) {
-                res.status(400).json({message:"ID не указан"});
+                res.status(400).json({message: "ID не указан"});
             }
-            const updatedUser = await User.update( user, {where: {id: user.id}});
+            const updatedUser = await User.update(user, {where: {id: user.id}});
             return res.json(updatedUser);
         } catch (e) {
             res.status(500).json(e.message)
@@ -72,11 +87,11 @@ class UserController {
 
     async delete(req, res) {
         try {
-            // const {id} = req.params;
-            // if (!id) {
-            //     res.status(400).json({message:"ID не указан"});
-            // }
-            const user = await User.destroy({where:{id: req.params.id}});
+            const {id} = req.params;
+            if (!id) {
+                res.status(400).json({message:"ID не указан"});
+            }
+            const user = await User.destroy({where: {id:id}});
             return res.json(user);
 
         } catch (e) {

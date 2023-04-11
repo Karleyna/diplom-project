@@ -9,6 +9,7 @@ router.post('/registration-trainer',checkRoleMiddleware('admin'), userController
 router.post('/login', userController.login);
 router.get('/auth', authMiddleware, userController.check);
 router.get('/users', userController.getAll);
+router.get('/users/:id', userController.getOne);
 router.put('/users', userController.update);
 router.delete('/users/:id', userController.delete);
 
