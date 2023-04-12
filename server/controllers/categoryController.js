@@ -17,6 +17,38 @@ class categoryController {
         const category = await Category.findOne({where: {id}});
         return res.json(category);
     }
+    async update(req, res, next) {
+        try {
+            if (!req.params.id) {
+                res.status(400).json({message:"ID не указан"});
+            }
+            const category = await Category.findByPk(req.params.id)
+            if (!category) {
+                res.status(404).json({message:"Категория не надена"});
+            }
+            const name = req.body.name ?? category.name
+            await category.update({name})
+            res.json(category)
+        } catch(e) {
+            next(ApiError.badRequest(e.message))
+        }
+    }
+
+    async delete(req, res, next) {
+        try {
+            if (!req.params.id) {
+                res.status(400).json({message:"ID не указан"});
+            }
+            const category = await Category.findByPk(req.params.id)
+            if (!category) {
+                res.status(404).json({message:"Категория не надена"});
+            }
+            await category.destroy()
+            res.json(category)
+        } catch(e) {
+            next(ApiError.badRequest(e.message))
+        }
+    }
 
 }
 

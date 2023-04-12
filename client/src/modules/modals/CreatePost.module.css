@@ -1,0 +1,24 @@
+.sectionBut {
+    margin: 1vw;
+    font-size: 0.8rem;
+    height: 4vh;
+}
+.section{
+    margin: 1vw;
+    display: flex;
+    justify-content: space-between;
+}
+h2{
+    font-size: 3rem;
+}
+.newMaterial{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1vw;
+}
+
+.delBtn{
+    height: 5vh;
+    width: 8vw;
+}

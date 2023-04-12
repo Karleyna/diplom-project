@@ -15,14 +15,14 @@ class postsController {
             if (info) {
                 let fileName = uuid.v4() + ".docx"
                 await file_.mv(path.resolve(__dirname, '..', 'static'));
-                console.log(file_)
+                // console.log(file_)
                 info = JSON.parse(info)
                 info.forEach(i =>
                     PostInfo.create({
                         title: i.title,
                         description: i.description,
                         postId: post.id,
-                        file:fileName
+                        file: fileName
 
                     })
                 )
@@ -45,7 +45,7 @@ class postsController {
             posts = await Posts.findAndCountAll({limit, offset})
         }
         if (categoryId) {
-            posts = await Posts.findAndCountAll({where:{categoryId}, limit, offset})
+            posts = await Posts.findAndCountAll({where: {categoryId}, limit, offset})
         }
         return res.json(posts)
     }
@@ -60,6 +60,41 @@ class postsController {
         )
         return res.json(post);
     }
+
+    // async update(req, res, next) {
+    //     try {
+    //         if (!req.params.id) {
+    //             throw new Error('Не указан id товара')
+    //         }
+    //         const product = await ProductMapping.findByPk(req.params.id)
+    //         if (!product) {
+    //             throw new Error('Товар не найден в БД')
+    //         }
+    //         const name = req.body.name ?? product.name
+    //         const price = req.body.price ?? product.price
+    //         await product.update({name, price})
+    //         res.json(product)
+    //     } catch(e) {
+    //         next(ApiError.badRequest(e.message))
+    //     }
+    // }
+    //
+    // async delete(req, res, next) {
+    //     try {
+    //         if (!req.params.id) {
+    //             throw new Error('Не указан id товара')
+    //         }
+    //         const product = await ProductMapping.findByPk(req.params.id)
+    //         if (!product) {
+    //             throw new Error('Товар не найден в БД')
+    //         }
+    //         await product.destroy()
+    //         res.json(product)
+    //     } catch(e) {
+    //         next(AppError.badRequest(e.message))
+    //     }
+    // }
+
 }
 
 module.exports = new postsController()
