@@ -6,27 +6,25 @@ const ApiError = require('../errors/ApiError');
 class postsController {
     async create(req, res, next) {
         try {
-            let {name, categoryId, info} = req.body
-            const {img, file_} = req.files
+            let {name, categoryId} = req.body
+            const {img} = req.files
             let fileName = uuid.v4() + ".jpg"
             await img.mv(path.resolve(__dirname, '..', 'static', fileName))
             const post = await Posts.create({name, categoryId, img: fileName});
 
-            if (info) {
-                let fileName = uuid.v4() + ".docx"
-                await file_.mv(path.resolve(__dirname, '..', 'static'));
-                // console.log(file_)
-                info = JSON.parse(info)
-                info.forEach(i =>
-                    PostInfo.create({
-                        title: i.title,
-                        description: i.description,
-                        postId: post.id,
-                        file: fileName
-
-                    })
-                )
-            }
+            // if (info) {
+            //     info = JSON.parse(info)
+            //
+            //     info.forEach(i =>
+            //         PostInfo.create({
+            //             title: i.title,
+            //             description: i.description,
+            //             postId: post.id,
+            //             // file: fileName
+            //
+            //         })
+            //     )
+            // }
 
             return res.json(post)
         } catch (e) {
@@ -34,6 +32,7 @@ class postsController {
         }
 
     }
+
 
     async getAll(req, res) {
         let {categoryId, limit, page} = req.query;

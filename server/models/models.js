@@ -41,7 +41,7 @@ Posts.belongsTo(Category);
 User.hasMany(Certificate);
 Certificate.belongsTo(User);
 
-Posts.hasMany(PostInfo, {as: 'info'});
+Posts.hasMany(PostInfo);
 PostInfo.belongsTo(Posts);
 
 

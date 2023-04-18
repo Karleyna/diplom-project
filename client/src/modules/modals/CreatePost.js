@@ -45,6 +45,7 @@ const CreatePost = observer(({show, onHide}) => {
         formData.append('name', name)
         formData.append('img', fileImg)
         formData.append('categoryId', post.selectedCategory.id)
+        formData.append('file', file)
         formData.append('info', JSON.stringify(info))
         createPost(formData).then(data => onHide())
     }
