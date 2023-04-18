@@ -73,12 +73,12 @@ class postPropertyController {
             if (!req.body) {
                 res.status(400).json({message: "Нет данных для обновления"});
             }
-            let fileName = "";
-            const propFile = await PostInfo.findByPk(req.params.id);
-            if (propFile.file.toString()){
-                await fs.unlinkSync(path.resolve(__dirname, '..', 'static', propFile.file.toString()));
-            }
+            let fileName;
             if (req.files) {
+                const propFile = await PostInfo.findByPk(req.params.id);
+                if (propFile.file !== null){
+                    await fs.unlinkSync(path.resolve(__dirname, '..', 'static', propFile.file.toString()));
+                }
                 const {file} = req.files;
                 const type = file.name.split('.').pop();
                 fileName = uuid.v4() + "." + type;

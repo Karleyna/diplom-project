@@ -2,18 +2,23 @@ const uuid = require('uuid')
 const path = require('path');
 const {Posts, PostInfo} = require('../models/models')
 const ApiError = require('../errors/ApiError');
+const fs = require("fs");
+const {postPropertyController} = require('./postPropertyController');
 
 class postsController {
     async create(req, res, next) {
         try {
-            let {name, categoryId} = req.body
-            const {img} = req.files
-            let fileName = uuid.v4() + ".jpg"
-            await img.mv(path.resolve(__dirname, '..', 'static', fileName))
+            let {name, categoryId} = req.body;
+            let fileName;
+            if (req.files) {
+                const {img} = req.files;
+                fileName = uuid.v4() + ".jpg";
+                await img.mv(path.resolve(__dirname, '..', 'static', fileName));
+            }
             const post = await Posts.create({name, categoryId, img: fileName});
-            return res.json(post)
+            return res.json(post);
         } catch (e) {
-            next(ApiError.badRequest(e.message))
+            next(ApiError.badRequest(e.message));
         }
 
     }
@@ -49,30 +54,48 @@ class postsController {
             if (!post) {
                 res.status(400).json({message: "Пост не найден в БД"});
             }
-            const name = req.body.name ?? product.name
-            const price = req.body.price ?? product.price
-            await product.update({name, price})
-            res.json(product)
-        } catch(e) {
+            let fileName;
+            if (req.files) {
+                if (post.img !== null) {
+                    await fs.unlinkSync(path.resolve(__dirname, '..', 'static', post.img.toString()));
+                }
+                const {img} = req.files;
+                fileName = uuid.v4() + ".jpg";
+                await img.mv(path.resolve(__dirname, '..', 'static', fileName));
+            }
+            const {name, categoryId} = req.body;
+            await post.update({name, categoryId, img: fileName})
+            res.json(post)
+        } catch (e) {
             next(ApiError.badRequest(e.message))
         }
     }
-    //
-    // async delete(req, res, next) {
-    //     try {
-    //         if (!req.params.id) {
-    //             throw new Error('Не указан id товара')
-    //         }
-    //         const product = await ProductMapping.findByPk(req.params.id)
-    //         if (!product) {
-    //             throw new Error('Товар не найден в БД')
-    //         }
-    //         await product.destroy()
-    //         res.json(product)
-    //     } catch(e) {
-    //         next(AppError.badRequest(e.message))
-    //     }
-    // }
+
+    async delete(req, res, next) {
+        try {
+            if (!req.params.id) {
+                res.status(400).json({message: "Не указано id"});
+            }
+            const post = await Posts.findByPk(req.params.id)
+            if (!post) {
+                res.status(400).json({message: "Пост не найден в БД"});
+            }
+            const properties = await PostInfo.findAll({where: {postId: req.params.id}});
+            for (let i of properties) {
+                if (i.file !== null) {
+                    await fs.unlinkSync(path.resolve(__dirname, '..', 'static', i.file.toString()));
+                }
+                await i.destroy();
+            }
+            if (post.img !== null) {
+                await fs.unlinkSync(path.resolve(__dirname, '..', 'static', post.img.toString()));
+            }
+            await post.destroy()
+            res.json(post)
+        } catch (e) {
+            next(ApiError.badRequest(e.message))
+        }
+    }
 
 }
 
