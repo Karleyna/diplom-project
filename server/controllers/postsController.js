@@ -11,21 +11,6 @@ class postsController {
             let fileName = uuid.v4() + ".jpg"
             await img.mv(path.resolve(__dirname, '..', 'static', fileName))
             const post = await Posts.create({name, categoryId, img: fileName});
-
-            // if (info) {
-            //     info = JSON.parse(info)
-            //
-            //     info.forEach(i =>
-            //         PostInfo.create({
-            //             title: i.title,
-            //             description: i.description,
-            //             postId: post.id,
-            //             // file: fileName
-            //
-            //         })
-            //     )
-            // }
-
             return res.json(post)
         } catch (e) {
             next(ApiError.badRequest(e.message))
@@ -51,32 +36,27 @@ class postsController {
 
     async getOne(req, res) {
         const {id} = req.params
-        const post = await Posts.findOne(
-            {
-                where: {id},
-                include: [{model: PostInfo, as: 'info'}]
-            },
-        )
+        const post = await Posts.findOne({where: {id}})
         return res.json(post);
     }
 
-    // async update(req, res, next) {
-    //     try {
-    //         if (!req.params.id) {
-    //             throw new Error('Не указан id товара')
-    //         }
-    //         const product = await ProductMapping.findByPk(req.params.id)
-    //         if (!product) {
-    //             throw new Error('Товар не найден в БД')
-    //         }
-    //         const name = req.body.name ?? product.name
-    //         const price = req.body.price ?? product.price
-    //         await product.update({name, price})
-    //         res.json(product)
-    //     } catch(e) {
-    //         next(ApiError.badRequest(e.message))
-    //     }
-    // }
+    async update(req, res, next) {
+        try {
+            if (!req.params.id) {
+                res.status(400).json({message: "Не указано id"});
+            }
+            const post = await Posts.findByPk(req.params.id)
+            if (!post) {
+                res.status(400).json({message: "Пост не найден в БД"});
+            }
+            const name = req.body.name ?? product.name
+            const price = req.body.price ?? product.price
+            await product.update({name, price})
+            res.json(product)
+        } catch(e) {
+            next(ApiError.badRequest(e.message))
+        }
+    }
     //
     // async delete(req, res, next) {
     //     try {

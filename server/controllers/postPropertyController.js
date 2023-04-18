@@ -2,6 +2,7 @@ const {Posts, PostInfo} = require('../models/models')
 const ApiError = require('../errors/ApiError');
 const uuid = require('uuid')
 const path = require('path');
+const fs = require("fs");
 
 
 class postPropertyController {
@@ -54,7 +55,7 @@ class postPropertyController {
             const {title, description} = req.body;
             const property = await PostInfo.create({title, description, file: fileName})
             await property.setPost(post);
-             res.json(property)
+            res.json(property)
         } catch (e) {
             next(ApiError.badRequest(e.message))
         }
@@ -69,10 +70,27 @@ class postPropertyController {
             if (!req.params.id) {
                 res.status(400).json({message: "Не указано id записи"});
             }
-            if (Object.keys(req.body).length === 0) {
+            if (!req.body) {
                 res.status(400).json({message: "Нет данных для обновления"});
             }
-            const property = await PostInfo.update(req.params.postId, req.params.id, req.body)
+            let fileName = "";
+            const propFile = await PostInfo.findByPk(req.params.id);
+            if (propFile.file.toString()){
+                await fs.unlinkSync(path.resolve(__dirname, '..', 'static', propFile.file.toString()));
+            }
+            if (req.files) {
+                const {file} = req.files;
+                const type = file.name.split('.').pop();
+                fileName = uuid.v4() + "." + type;
+                await file.mv(path.resolve(__dirname, '..', 'static', fileName))
+            }
+            const {title, description} = req.body;
+            const property = await PostInfo.update({title, description, file: fileName}, {
+                where: {
+                    id: req.params.id,
+                    postId: req.params.postId
+                }
+            })
             res.json(property)
         } catch (e) {
             next(ApiError.badRequest(e.message))
@@ -87,7 +105,11 @@ class postPropertyController {
             if (!req.params.id) {
                 res.status(400).json({message: "Не указано id записи"});
             }
-            const property = await PostInfo.destroy(req.params.postId, req.params.id)
+            const propFile = await PostInfo.findByPk(req.params.id);
+            if (propFile.file.toString()){
+                await fs.unlinkSync(path.resolve(__dirname, '..', 'static', propFile.file.toString()));
+            }
+            const property = await PostInfo.destroy({where: {postId :req.params.postId, id: req.params.id}});
             res.json(property)
         } catch (e) {
             next(ApiError.badRequest(e.message))
