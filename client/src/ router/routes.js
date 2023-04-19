@@ -7,6 +7,7 @@ import {
     TRAINER_ROUTE,
     USEFUL_ROUTE
 } from "../utils/consts";
+
 import trainerPage from "../pages/TrainerPage/TrainerPage"
 import mainPage from "../pages/MainPage/MainPage";
 import LoginPage from "../pages/LoginPages/LoginPage";
@@ -20,13 +21,14 @@ import PostPage from "../pages/UsefulPage/PostPage/PostPage";
 
 
 export const adminRotes = [
-
-]
-export const authRoutes = [
     {
         path: ADMIN_ROUTE,
         Component: adminPage
     },
+]
+
+export const authRoutes = [
+
     {
         path: TRAINER_ROUTE,
         Component: trainerPage

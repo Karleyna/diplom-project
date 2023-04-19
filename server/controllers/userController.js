@@ -31,6 +31,9 @@ class UserController {
 
     async login(req, res, next) {
         const {email, password} = req.body;
+        if (!email || !password) {
+            return next(ApiError.badRequest('Empty email or password'));
+        }
         const user = await User.findOne({where: {email}});
         if (!user) {
             return next(ApiError.internal('User with this email not found'));

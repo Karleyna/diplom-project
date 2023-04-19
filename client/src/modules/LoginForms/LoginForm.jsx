@@ -16,6 +16,7 @@ const LoginForm = observer(() => {
     const history = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    let role;
 
 
     const click = async () => {
@@ -25,6 +26,8 @@ const LoginForm = observer(() => {
             user.setUser(data);
             user.setIsAuth(true);
             history(MAIN_ROUTE);
+            role = data.role;
+            console.log(role);
         } catch (e) {
             alert(e.response.data.message)
         }

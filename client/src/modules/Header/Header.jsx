@@ -15,16 +15,19 @@ import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import Navbar from "react-bootstrap/Navbar";
 import {useNavigate} from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 
 const Header = observer(() => {
     const navigate = useNavigate();
     const {user} = useContext(Context);
+    let token = jwtDecode(localStorage.token)
     const logOut = () =>{
         user.setUser(null);
         user.setIsAuth(false);
         alert("Всего доброго");
         localStorage.clear();
+        token = null;
     }
     return (
         <Navbar className="header">
@@ -35,19 +38,33 @@ const Header = observer(() => {
                                 <img src={icon} alt=""></img>
                             </a>
                         </div>
-                        {user.isAuth ?
+                        {user.isAuth && token.role === 'admin'?
                             <nav className="catalog-navigation-buttons">
                                 <MyLink to={ADMIN_ROUTE} >Admin</MyLink>
-                                <MyLink to={TRAINER_ROUTE} >Trainer</MyLink>
                                 <MyLink to={USEFUL_ROUTE} >Useful page</MyLink>
                                 <MyLink to={PERSONAL_ROUTE} >Personal cabinet</MyLink>
                                 <MyLink onClick={()=>logOut()} to='/'>Exit</MyLink>
                             </nav>
-                            :
+                            : user.isAuth && token.role === 'trainer' ?
                             <nav className="catalog-navigation-buttons">
+                                <MyLink to={TRAINER_ROUTE} >Trainer</MyLink>
+                                <MyLink to={MEDICAL_ROUTE} >Medical</MyLink>
+                                <MyLink to={USEFUL_ROUTE} >Useful page</MyLink>
+                                <MyLink to={PERSONAL_ROUTE} >Personal cabinet</MyLink>
+                                <MyLink onClick={()=>logOut()} to='/'>Exit</MyLink>
+                            </nav>
+                            :user.isAuth ?
+                                <nav className="catalog-navigation-buttons">
+                                    <MyLink to={MEDICAL_ROUTE} >Medical</MyLink>
+                                    <MyLink to={USEFUL_ROUTE} >Useful page</MyLink>
+                                    <MyLink to={PERSONAL_ROUTE} >Personal cabinet</MyLink>
+                                    <MyLink onClick={()=>logOut()} to='/'>Exit</MyLink>
+                                </nav>
+                            :
+                              <nav className="catalog-navigation-buttons">
                                 <MyLink to={MEDICAL_ROUTE} >Medical</MyLink>
                                 <MyLink to={LOGIN_ROUTE} >Войти</MyLink>
-                            </nav>
+                              </nav>
                         }
                     </div>
                 </div>
