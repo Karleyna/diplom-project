@@ -14,9 +14,8 @@ const Footer = () => {
                         <p>+79045746021 (Новосибирск)</p>
                         <p>+79139167647 (Академгородок)</p>
                         <p>Адреса:</p>
-                        <p>Новосибирск ул. Где-нибудь, 58 </p>
-                        <p>Верхняя зона Академгородка м-н, Советский район, Новосибирск,
-                        Пирогова 78</p>
+                        <p>«Академпарк», ул. Николаева, 12 </p>
+                        <p>Академгорок, Советский район, Новосибирск</p>
                         <div className="social">
                             <a className="social-youtube" href="../../ui/PicturesForUI/YouTube_full-color_icon.png">
                                 <img src={iconYoutube} alt=""></img>
@@ -30,14 +29,14 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className="mail">
-                    <h1>Свяжитесь с нами</h1>
-                    <div className="inputs">
-                        <input type="name"  placeholder=" Ваше имя"/>
-                        <input type="telephone" placeholder=" Ваш телефон"/>
-                        <textarea type="message" placeholder=" Ваше сообщение"></textarea>
-                    </div>
-                </div>
+                {/*<div className="mail">*/}
+                {/*    <h1>Свяжитесь с нами</h1>*/}
+                {/*    <div className="inputs">*/}
+                {/*        <input type="name"  placeholder=" Ваше имя"/>*/}
+                {/*        <input type="telephone" placeholder=" Ваш телефон"/>*/}
+                {/*        <textarea type="message" placeholder=" Ваше сообщение"></textarea>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </div>
 
         </div>

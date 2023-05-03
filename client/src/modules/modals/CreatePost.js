@@ -19,7 +19,7 @@ const CreatePost = observer(({show, onHide}) => {
 
     useEffect(() => {
         fetchCategories().then(data => post.setCategories(data));
-        // fetchPosts().then(data => post.setPosts(data));
+        fetchPosts().then(data => post.setPosts(data));
     }, [])
 
     const addInfo = (e) => {
@@ -46,7 +46,6 @@ const CreatePost = observer(({show, onHide}) => {
         formData.append('img', fileImg)
         formData.append('categoryId', post.selectedCategory.id)
         formData.append('file', file)
-        formData.append('info', JSON.stringify(info))
         createPost(formData).then(data => onHide())
     }
 

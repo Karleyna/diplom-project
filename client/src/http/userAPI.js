@@ -17,3 +17,11 @@ export const check = async () => {
     localStorage.setItem('token',data.token);
     return jwtDecode(data.token);
 }
+export const fetchOneUser = async (id) => {
+    const {data} = await $host.get('api/user/users/' + id)
+    return data
+}
+export const fetchUsers = async (categoryId, page, limit= 5) => {
+    const {data} = await $host.get('api/user/users/')
+    return data
+}

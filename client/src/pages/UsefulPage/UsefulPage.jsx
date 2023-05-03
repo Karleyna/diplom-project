@@ -5,22 +5,22 @@ import classes from "./UsefulPage.module.css";
 import {fetchCategories, fetchPosts} from "../../http/postAPI";
 import PostList from "./PostElems/PostList";
 import {Context} from "../../index";
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import Pages from "../../modules/Pages";
 
 const UsefulPage = observer(() => {
-    const {post} = useContext(Context)
+    const {post} = useContext(Context);
+
 
     useEffect(() => {
         fetchCategories().then(data => post.setCategories(data))
-        fetchPosts(null, 1, 2).then(data => {
+        fetchPosts(null, 1, 5).then(data => {
             post.setPosts(data.rows)
             post.setTotalCount(data.count)
         })
     }, [])
 
     useEffect(() => {
-        fetchPosts(post.selectedCategory.id, post.page, 2).then(data => {
+        fetchPosts(post.selectedCategory.id, post.page, 5).then(data => {
             post.setPosts(data.rows)
             post.setTotalCount(data.count)
         })
@@ -29,12 +29,15 @@ const UsefulPage = observer(() => {
 
     return <>
         <div className={classes.main}>
-            <h1 style={{color:'white'}}>USEFUL PAGE</h1>
-            <CategoryRow/>
-            <div className={classes.menu}>
-                <PostList/>
-            </div>
-
+                <h1 style={{color:'white'}}>USEFUL PAGE</h1>
+                <section className={classes.content}>
+                    <section className={classes.categoryRow}>
+                        <CategoryRow />
+                    </section>
+                    <div className={classes.menu}>
+                        <PostList/>
+                    </div>
+                </section>
 
             <Pages/>
         </div>

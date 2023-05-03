@@ -3,9 +3,7 @@ import MyButton from "../../ui/buttons/MyButton";
 import classes from "./AdminPage.module.css";
 import CreateCategory from "../../modules/modals/CreateCategory";
 import CreatePost from "../../modules/modals/CreatePost";
-import Modal from "../../ui/Modal/Modal";
 import {observer} from "mobx-react-lite";
-import {post} from "axios";
 import {Context} from "../../index";
 
 

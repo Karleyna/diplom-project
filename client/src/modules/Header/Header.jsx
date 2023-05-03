@@ -21,7 +21,11 @@ import jwtDecode from "jwt-decode";
 const Header = observer(() => {
     const navigate = useNavigate();
     const {user} = useContext(Context);
-    let token = jwtDecode(localStorage.token)
+    let token;
+    if (localStorage.token){
+        token = jwtDecode(localStorage.token)
+    }
+    // let token = jwtDecode(localStorage.token)
     const logOut = () =>{
         user.setUser(null);
         user.setIsAuth(false);
@@ -53,7 +57,7 @@ const Header = observer(() => {
                                 <MyLink to={PERSONAL_ROUTE} >Personal cabinet</MyLink>
                                 <MyLink onClick={()=>logOut()} to='/'>Exit</MyLink>
                             </nav>
-                            :user.isAuth ?
+                           :user.isAuth ?
                                 <nav className="catalog-navigation-buttons">
                                     <MyLink to={MEDICAL_ROUTE} >Medical</MyLink>
                                     <MyLink to={USEFUL_ROUTE} >Useful page</MyLink>

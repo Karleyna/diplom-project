@@ -7,7 +7,6 @@ const RegistrationPage = () => {
     return (
         <div className={classes.page}>
             <div className={classes.form}>
-                <h1>Регистрация</h1>
                 <FormRegistration>
                 </FormRegistration>
             </div>

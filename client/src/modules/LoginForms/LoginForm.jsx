@@ -26,8 +26,7 @@ const LoginForm = observer(() => {
             user.setUser(data);
             user.setIsAuth(true);
             history(MAIN_ROUTE);
-            role = data.role;
-            console.log(role);
+            alert('Добро пожаловать!');
         } catch (e) {
             alert(e.response.data.message)
         }
@@ -42,7 +41,8 @@ const LoginForm = observer(() => {
                     <label className={classes.input}>
                         <div style={{width: "28vw"}}>
                             <MyInput value={email} onChange={e => setEmail(e.target.value)}
-                                     placeholder={"Введите Ваш Email.."}></MyInput></div>
+                                     placeholder={"Введите Ваш Email.."}></MyInput>
+                        </div>
                     </label>
 
                     <label className={classes.input}>

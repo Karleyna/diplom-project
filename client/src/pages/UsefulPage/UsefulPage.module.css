@@ -3,14 +3,24 @@
     align-items: center;
     justify-content: space-around;
     flex-flow: column;
-    height: 100vh;
+    height: 80vh;
     width: 100vw;
     background: linear-gradient(rgba(16, 41, 42, 1), transparent);
 }
 h1{
  font-family: 'Yeseva One', serif;
 }
+.content{
+    display: flex;
+    width: 80%;
+}
 .menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.categoryRow{
+    width: 15%;
     display: flex;
     align-items: center;
     justify-content: center;

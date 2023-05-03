@@ -14,7 +14,7 @@
 }
 .content{
     display: flex;
-    margin-top: 1vh;
+    margin-top: 2vh;
     align-items:flex-start;
     font-family: 'Yeseva One', cursive;
     font-size: 0.9em;
@@ -25,34 +25,40 @@
 
 .contacts{
     display: flex;
-    width: 25vw;
-    height: 18vh;
+    width: 20vw;
+    height: 25vh;
     align-items: center;
     flex-direction:column;
     justify-content: flex-start;
 }
-.contacts h1, .mail h1{
+.contacts h1{
     font-size: 2.5rem;
-    width: 20vw;
+    width: 17vw;
 
 }
 .text{
-    width: 19vw;
+
+    width: 15vw;
     justify-content: center;
     align-self: center;
-    text-align: left;
+    text-align: center;
     font-family: 'Comfortaa', cursive;
 }
 .text p {
     font-size: 1em;
     margin-bottom: 0;
 }
+.text div{
+    margin-left: 2vw;
+    margin-top: 0.5vw;
+}
 .social{
-    width: 8vw;
+
+    width: 10vw;
     height: 4vh;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    justify-content: space-around;
+    align-items: flex-start;
 
 }
 .social a img{

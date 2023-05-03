@@ -46,12 +46,13 @@ const FormRegistration = observer(() => {
                 validate={checkPasswords}
                 render={({handleSubmit}) => (
                     <form onSubmit={handleSubmit} className={classes.formReg}>
+                        <h1>Регистрация</h1>
                         <div className={classes.elemReg}>
                             <Field name="email" validate={composeValidators(required, length, validEmail)}>
                                 {({input, meta}) => (
                                     <div style={{width: '28vw'}}>
                                         <label>E-mail:
-                                            <MyInput type="text" {...input} placeholder="Логин"/>
+                                            <MyInput type="text" style={{width: '28vw'}} {...input} placeholder="Логин"/>
                                         </label>
                                         {meta.touched && meta.error &&
                                             <div className={classes.comment}>{meta.error}</div>}
@@ -62,7 +63,7 @@ const FormRegistration = observer(() => {
                                 {({input, meta}) => (
                                     <div style={{width: '28vw'}}>
                                         <label>Пароль:
-                                            <MyInput type="password" {...input} placeholder="Пароль"/>
+                                            <MyInput type="password" style={{width: '28vw'}} {...input} placeholder="Пароль"/>
                                         </label>
                                         {meta.touched && meta.error &&
                                             <div className={classes.comment}>{meta.error}</div>}
@@ -74,7 +75,7 @@ const FormRegistration = observer(() => {
                                 {({input, meta}) => (
                                     <div style={{width: '28vw'}}>
                                         <label>Повтор пароля:
-                                            <MyInput type="password" {...input} placeholder="Введите пароль ещё раз"/>
+                                            <MyInput type="password" style={{width: '28vw'}}{...input} placeholder="Введите пароль ещё раз"/>
                                         </label>
                                         {meta.touched && meta.error &&
                                             <div className={classes.comment}>{meta.error}</div>}
