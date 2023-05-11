@@ -1,6 +1,6 @@
 import adminPage from "../pages/AdminPage/AdminPage";
 import {
-    ADMIN_ROUTE,
+    ADMIN_ROUTE, COURSE_ROUTE,
     LOGIN_ROUTE,
     MAIN_ROUTE, MEDICAL_ROUTE, PERSONAL_ROUTE, POST_ROUTE,
     REGISTRATION_ROUTE,
@@ -17,6 +17,7 @@ import registrationPage from "../pages/LoginPages/RegistrationPage";
 import PersonalPage from "../pages/PersonalPage/PersonalPage";
 import React from "react";
 import PostPage from "../pages/UsefulPage/PostPage/PostPage";
+import CoursePage from "../pages/CoursePage/CoursePage";
 
 
 export const adminRotes = [
@@ -71,6 +72,10 @@ export const userRoutes = [
         Component: PersonalPage
     },
     {
+        path: COURSE_ROUTE,
+        Component: CoursePage
+    },
+    {
         path: USEFUL_ROUTE,
         Component: usefulPage
     },
@@ -88,6 +93,10 @@ export const publicRoutes = [
     {
         path: MAIN_ROUTE,
         Component: mainPage
+    },
+    {
+        path: COURSE_ROUTE,
+        Component: CoursePage
     },
     {
         path: LOGIN_ROUTE,

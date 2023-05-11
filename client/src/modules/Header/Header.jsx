@@ -3,7 +3,7 @@ import "./Header.css"
 import icon from "../../ui/PicturesForUI/iwsd icon.png";
 import MyLink from "../../ui/links/MyLink";
 import {
-    ADMIN_ROUTE,
+    ADMIN_ROUTE, COURSE_ROUTE,
     LOGIN_ROUTE,
     MAIN_ROUTE,
     MEDICAL_ROUTE,
@@ -67,6 +67,7 @@ const Header = observer(() => {
                             :
                               <nav className="catalog-navigation-buttons">
                                 <MyLink to={MEDICAL_ROUTE} >Medical</MyLink>
+                                <MyLink to={COURSE_ROUTE} >Course</MyLink>
                                 <MyLink to={LOGIN_ROUTE} >Войти</MyLink>
                               </nav>
                         }
