@@ -15,7 +15,7 @@ class postPropertyController {
             if (!post) {
                 res.status(400).json({message: "Товар не найден в БД"});
             }
-            const properties = await PostInfo.findAndCountAll({where: {id: req.params.postId}})
+            const properties = await PostInfo.findAll({where: {postId: req.params.postId}})
 
             res.json(properties)
         } catch (e) {

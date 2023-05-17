@@ -14,7 +14,7 @@ const CreatePost = observer(({show, onHide}) => {
     const {post} = useContext(Context)
     const [name, setName] = useState('')
     const [fileImg, setFileImg] = useState(null)
-    const [info, setInfo] = useState([])
+    // const [info, setInfo] = useState([])
     const [file,setFile] = useState(null);
 
     useEffect(() => {
@@ -22,19 +22,19 @@ const CreatePost = observer(({show, onHide}) => {
         fetchPosts().then(data => post.setPosts(data));
     }, [])
 
-    const addInfo = (e) => {
-        e.preventDefault();
-        setInfo([...info, {title: '', description: '', number: Date.now(), file:selectFile}])
-    }
-    const removeInfo = (number) => {
-        setInfo(info.filter(i => i.number !== number))
-    }
-    const changeInfo = (key, value, number) => {
-        setInfo(info.map(i => i.number === number ? {...i, [key]: value} : i))
-    }
-    const selectFile  = e =>{
-        setFile(e.target.files[0]);
-    }
+    // const addInfo = (e) => {
+    //     e.preventDefault();
+    //     setInfo([...info, {title: '', description: '', number: Date.now(), file:selectFile}])
+    // }
+    // const removeInfo = (number) => {
+    //     setInfo(info.filter(i => i.number !== number))
+    // }
+    // const changeInfo = (key, value, number) => {
+    //     setInfo(info.map(i => i.number === number ? {...i, [key]: value} : i))
+    // }
+    // const selectFile  = e =>{
+    //     setFile(e.target.files[0]);
+    // }
 
     const selectFileImg = e => {
         setFileImg(e.target.files[0])
@@ -89,50 +89,50 @@ const CreatePost = observer(({show, onHide}) => {
                         onChange={selectFileImg}
                     />
                     <hr/>
-                    <div className={classes.sectionBut}>
-                        <MyButton
-                            style={{fontSize: '1rem'}}
-                            onClick={addInfo}
-                        >
-                            Добавить новый материал
-                        </MyButton>
-                    </div>
+                    {/*<div className={classes.sectionBut}>*/}
+                    {/*    <MyButton*/}
+                    {/*        style={{fontSize: '1rem'}}*/}
+                    {/*        onClick={addInfo}*/}
+                    {/*    >*/}
+                    {/*        Добавить новый материал*/}
+                    {/*    </MyButton>*/}
+                    {/*</div>*/}
 
-                    {info.map(i =>
-                        <section className={classes.newMaterial} key={i.number}>
-                            <Col md={3}>
-                                <MyInput
-                                    value={i.title}
-                                    onChange={(e) => changeInfo('title', e.target.value, i.number)}
-                                    placeholder="Введите название подзаголовка"
-                                />
-                            </Col>
-                            <Col md={5}>
-                                <Form.Control
-                                    as="textarea"
-                                    value={i.description}
-                                    onChange={(e) => changeInfo('description', e.target.value, i.number)}
-                                    placeholder="Введите текст"
-                                />
-                            </Col>
-                            <Col className={classes.delBtn} md={2.5}>
-                                <MyButton
-                                    style={{fontSize: '1rem'}}
-                                    onClick={() => removeInfo(i.number)}
-                                >
-                                    Удалить
-                                </MyButton>
+                    {/*{info.map(i =>*/}
+                    {/*    <section className={classes.newMaterial} key={i.number}>*/}
+                    {/*        <Col md={3}>*/}
+                    {/*            <MyInput*/}
+                    {/*                value={i.title}*/}
+                    {/*                onChange={(e) => changeInfo('title', e.target.value, i.number)}*/}
+                    {/*                placeholder="Введите название подзаголовка"*/}
+                    {/*            />*/}
+                    {/*        </Col>*/}
+                    {/*        <Col md={5}>*/}
+                    {/*            <Form.Control*/}
+                    {/*                as="textarea"*/}
+                    {/*                value={i.description}*/}
+                    {/*                onChange={(e) => changeInfo('description', e.target.value, i.number)}*/}
+                    {/*                placeholder="Введите текст"*/}
+                    {/*            />*/}
+                    {/*        </Col>*/}
+                    {/*        <Col className={classes.delBtn} md={2.5}>*/}
+                    {/*            <MyButton*/}
+                    {/*                style={{fontSize: '1rem'}}*/}
+                    {/*                onClick={() => removeInfo(i.number)}*/}
+                    {/*            >*/}
+                    {/*                Удалить*/}
+                    {/*            </MyButton>*/}
 
-                            </Col>
-                            <Col md={3}>
-                                <Form.Control
-                                    className="mt-3 mr-3"
-                                    type="file"
-                                    onChange={selectFile}
-                                />
-                            </Col>
-                        </section>
-                    )}
+                    {/*        </Col>*/}
+                    {/*        <Col md={3}>*/}
+                    {/*            <Form.Control*/}
+                    {/*                className="mt-3 mr-3"*/}
+                    {/*                type="file"*/}
+                    {/*                onChange={selectFile}*/}
+                    {/*            />*/}
+                    {/*        </Col>*/}
+                    {/*    </section>*/}
+                    {/*)}*/}
                 </Form>
             </section>
             <section className={classes.section}>

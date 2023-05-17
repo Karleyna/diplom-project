@@ -24,6 +24,11 @@ export const fetchPosts = async (categoryId, page, limit= 5) => {
     return data
 }
 
+export const fetchPostInfo = async (postId) => {
+    const {data} = await $host.get(`api/posts/${postId}/property/`)
+    return data
+}
+
 export const fetchOnePost = async (id) => {
     const {data} = await $host.get('api/posts/' + id)
     return data
