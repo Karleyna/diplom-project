@@ -1,0 +1,107 @@
+.currentValue{
+    background: #C3462E;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: column;
+    color: white;
+    padding: 1vw;
+    margin-top: 1vh;
+    max-width: 70%;
+    border: #C3462E solid;
+    border-radius: 1vw;
+    font-size: 1.5rem;
+    height: 45vh;
+    width: 35vw;
+}
+.currentValue h3{
+    font-size: 2rem;
+}
+
+.tab {
+    position: relative;
+    margin: 1vh;
+    width: 100%;
+    color: #fff;
+    overflow: hidden;
+}
+.tabInput {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+.tab label {
+    position: relative;
+    display: block;
+    padding: 0 0 0 1em;
+    font-weight: bold;
+    line-height: 3;
+    cursor: pointer;
+}
+.tabContent {
+    padding: 0 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition: max-height .35s;
+    -o-transition: max-height .35s;
+    transition: max-height .35s;
+}
+.tabContent input {
+    height: 6vh;
+}
+
+/* :checked */
+.tab input:checked ~ .tabContent {
+    max-height: 100vh;
+}
+
+/* Icon */
+.tab label::after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 3em;
+    height: 3em;
+    line-height: 3;
+    text-align: center;
+    -webkit-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+}
+.tab input[type=checkbox] + label::after {
+    content: "+";
+}
+.tab input[type=radio] + label::after {
+    content: "\25BC";
+}
+.tab input[type=checkbox]:checked + label::after {
+    transform: rotate(315deg);
+}
+.tab input[type=radio]:checked + label::after {
+    transform: rotateX(180deg);
+}
+
+.formUpdate{
+    background: #1D3436;
+    color: white;
+    padding: 1vw;
+    margin-top: 1vh;
+    max-width: 70%;
+    border: #1D3436 solid;
+    border-radius: 1vw;
+}
+
+.btn{
+    margin: 2vh 1vh 1vh 1vh;
+    height: 4.5vh;
+    width: 80%;
+
+}
+.comment {
+    font-size: 0.8rem;
+    text-align: left;
+    width: 90%;
+}
