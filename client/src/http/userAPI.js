@@ -3,7 +3,12 @@ import jwtDecode from "jwt-decode";
 
 
 export const registration = async (email, password) => {
-    const {data} = await $host.post('api/user/registration',{email,password, role:'admin'});
+    const {data} = await $host.post('api/user/registration',{email,password});
+    localStorage.setItem('token',data.token);
+    return jwtDecode(data.token);
+}
+export const updateUser = async (id,email,FIO,telephone,age) => {
+    const {data} = await $host.put('api/user/users/' + id,{email,FIO,telephone,age});
     localStorage.setItem('token',data.token);
     return jwtDecode(data.token);
 }

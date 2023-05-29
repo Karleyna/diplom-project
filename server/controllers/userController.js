@@ -77,12 +77,14 @@ class UserController {
 
     async update(req, res) {
         try {
-            const user = req.body;
-            if (!user.id) {
+            const {id} = req.params;
+            const {email, age, telephone, role, FIO} = req.body;
+            if (!id) {
                 res.status(400).json({message: "ID не указан"});
             }
-            const updatedUser = await User.update(user, {where: {id: user.id}});
-            return res.json(updatedUser);
+            const updatedUser = await User.update({email, age, telephone, role, FIO}, {where: {id:id}});
+            const token = generateJwt(id, email, role);
+            return res.json({token});
         } catch (e) {
             res.status(500).json(e.message)
         }

@@ -9,8 +9,6 @@ import Pages from "../../modules/Pages";
 
 const UsefulPage = observer(() => {
     const {post} = useContext(Context);
-
-
     useEffect(() => {
         fetchCategories().then(data => post.setCategories(data))
         fetchPosts(null, 1, 5).then(data => {
@@ -29,15 +27,17 @@ const UsefulPage = observer(() => {
 
     return <>
         <div className={classes.main}>
-                <h1 style={{color:'white'}}>USEFUL PAGE</h1>
-                <section className={classes.content}>
-                    <section className={classes.categoryRow}>
-                        <CategoryRow />
-                    </section>
-                    <div className={classes.menu}>
-                        <PostList/>
-                    </div>
+            <div className={classes.header}>
+                <h1 style={{color:'white'}}>Публикации</h1>
+            </div>
+            <section className={classes.content}>
+                <section className={classes.categoryRow}>
+                  <CategoryRow />
                 </section>
+                <div className={classes.menu}>
+                  <PostList/>
+                </div>
+            </section>
 
             <Pages/>
         </div>

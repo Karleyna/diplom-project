@@ -30,7 +30,6 @@ const FormRegistration = observer(() => {
             try {
                 let data;
                 data = await registration(values.email, values.password);
-                console.log(data)
                 user.setUser(data);
                 user.setIsAuth(true);
                 navigate(MAIN_ROUTE);

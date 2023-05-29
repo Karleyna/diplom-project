@@ -27,7 +27,7 @@ h1{
     margin-top: 1vh;
     width: 90%;
     flex-flow: column;
-    border: green solid;
+    border: #1D3436 solid;
     border-radius: 1vw;
 }
 h3{
@@ -43,7 +43,7 @@ h3{
     color: #fff;
     overflow: hidden;
 }
-.tab input {
+.tab_input {
     position: absolute;
     opacity: 0;
     z-index: -1;

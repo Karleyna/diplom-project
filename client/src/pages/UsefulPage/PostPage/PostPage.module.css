@@ -14,7 +14,15 @@
     justify-content: center;
     flex-flow: column;
 }
-.img img{
+.img img {
     width: 25vw;
     height: 32vh;
+}
+.description{
+    display: flex;
+    width: 80%;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
 }
