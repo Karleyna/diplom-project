@@ -1,12 +1,14 @@
 import React, {useContext, useState} from 'react';
 import MyButton from "../../ui/buttons/MyButton";
 import classes from "./AdminPage.module.css";
-import CreateCategory from "../../modules/modals/CreateCategory";
+import CategoryActions from "../../modules/modals/CategoryActions";
 import CreatePost from "../../modules/modals/CreatePost";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
 import {useEffect} from "react";
 import {fetchPosts} from "../../http/postAPI";
+import UserActions from "../../modules/modals/UserActions";
+
 
 
 const AdminPage = observer(() => {
@@ -17,8 +19,9 @@ const AdminPage = observer(() => {
             post.setTotalCount(data.count)
         })
     }, [post.page, post.selectedCategory])
-    const [categoryVisible, setCategoryVisible] = useState(false)
-    const [postVisible, setPostVisible] = useState(false)
+    const [categoryVisible, setCategoryVisible] = useState(false);
+    const [usersVisible, setUsersVisible] = useState(false);
+    const [postVisible, setPostVisible] = useState(false);
     return <>
         <div style={{height: '100vh'}}>
             <div style={{height: '100%'}}>
@@ -28,20 +31,18 @@ const AdminPage = observer(() => {
                         <h1>Панель администратора</h1>
                     </section>
                     <section className={classes.panel}>
-                        {/*<div>*/}
-                        {/*    <MyButton onClick={() => setPostVisible(true)}>Добавить публикацию</MyButton>*/}
-                        {/*</div>*/}
                         <div>
-                            <MyButton onClick={() => setCategoryVisible(true)}>Добавить категорию</MyButton>
+                            <MyButton onClick={() => setCategoryVisible(true)}>Категории</MyButton>
                         </div>
                         <div>
-                            <MyButton>Назначить тренера</MyButton>
+                            <MyButton onClick={() => setUsersVisible(true)}>Назначить тренера</MyButton>
                         </div>
                         <div>
                             <MyButton>Создать прайс-лист</MyButton>
                         </div>
                     </section>
-                    <CreateCategory show={categoryVisible} onHide={() => setCategoryVisible(false)}/>
+                    <CategoryActions show={categoryVisible} onHide={() => setCategoryVisible(false)}/>
+                    <UserActions show={usersVisible} onHide={() => setUsersVisible(false)}/>
                     <CreatePost show={postVisible} onHide={() => setPostVisible(false)}/>
 
                 </main>

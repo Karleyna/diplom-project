@@ -90,6 +90,20 @@ class UserController {
         }
     }
 
+    async updateRole(req, res) {
+        try {
+            const {id} = req.params;
+            const {role} = req.body;
+            if (!id) {
+                res.status(400).json({message: "ID не указан"});
+            }
+            const updatedUser = await User.update({role}, {where: {id:id}});
+            return res.json(updatedUser);
+        } catch (e) {
+            res.status(500).json(e.message)
+        }
+    }
+
     async delete(req, res) {
         try {
             const {id} = req.params;

@@ -2,20 +2,6 @@ import React from 'react';
 import classes from "./CoursePage.module.css";
 
 const CoursePage = () => {
-    let acc = document.getElementsByClassName("accordion");
-    let i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            let panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "vh";
-            }
-        });
-    }
     return (
         <>
             <section className={classes.main}>
@@ -28,7 +14,7 @@ const CoursePage = () => {
                 <section className={classes.courses}>
                     <section className={classes.courseModule}>
                         <div className={classes.tab}>
-                            <input id="tab-one" type="checkbox" name="tabs"/>
+                            <input id="tab-one" type="checkbox" name="tabs" className={classes.tab_input}/>
                             <label htmlFor="tab-one">
                                 <h3>Вводный урок</h3>
                             </label>

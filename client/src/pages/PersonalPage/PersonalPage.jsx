@@ -29,8 +29,7 @@ const PersonalPage = observer(() => {
     const onSubmit = async (values) => {
         try {
             let data;
-            console.log(userId, values.email, values.FIO, values.telephone,values.age)
-            data = await updateUser(userId, values.email, values.FIO, values.telephone,values.age);
+            data = await updateUser(userId, values.email, values.FIO, values.telephone,values.age, dataOfUser.role);
             user.setUser(data);
             user.setIsAuth(true);
             alert('Successful');

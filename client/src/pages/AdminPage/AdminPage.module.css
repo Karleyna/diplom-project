@@ -29,3 +29,11 @@
     height: 8vh;
     width: 100%;
 }
+.block{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.block button{
+    width: 17vw;
+}

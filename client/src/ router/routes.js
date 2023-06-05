@@ -68,6 +68,10 @@ export const trainerRoutes = [
 ]
 export const userRoutes = [
     {
+        path: COURSE_ROUTE,
+        Component: CoursePage
+    },
+    {
         path: PERSONAL_ROUTE,
         Component: PersonalPage
     },
@@ -94,10 +98,7 @@ export const publicRoutes = [
         path: MAIN_ROUTE,
         Component: mainPage
     },
-    {
-        path: COURSE_ROUTE,
-        Component: CoursePage
-    },
+
     {
         path: LOGIN_ROUTE,
         Component: LoginPage

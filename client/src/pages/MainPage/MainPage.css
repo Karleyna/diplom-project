@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Oswald:wght@200&family=Yeseva+One&display=swap');
 
 .body{
-    background: rgba(227, 255, 254, 1);
     z-index: 0;
 }
 a:hover {
@@ -112,7 +111,7 @@ a:hover {
     color: white;
     /*font-size: 0.9rem;*/
     text-align: center;
-    background: rgba(29, 52, 54, 1) ;
+    background: #0A3E4F;
     height: 33vh;
     width: 20vw;
     border-radius: 15px;
@@ -140,7 +139,7 @@ a:hover {
     flex-flow: column;
     align-items: center;
     justify-content: space-around;
-    background: rgba(255, 118, 76, 1);
+    background: #C3462E;
     color: white;
     border-radius: 10px;
     text-align: center;
@@ -196,7 +195,7 @@ a:hover {
     justify-content: space-around;
     height: 63vh;
     width: 70vw;
-    background: #1D3436;
+    background: #0A3E4F;;
     border-radius: 20px;
 }
 .ad-content_{
@@ -248,7 +247,7 @@ a:hover {
     width: 40vw;
     border-radius: 15px;
     font-family: "Comfortaa", serif;
-    background: rgba(255, 118, 76, 1);
+    background: #C3462E;
     color: white;
 }
 .line ::placeholder{

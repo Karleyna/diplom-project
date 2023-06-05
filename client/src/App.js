@@ -27,7 +27,7 @@ const App = observer(() => {
     }
 
     return <>
-        <div style={{background:"rgba(227, 255, 254, 1)"}}>
+        <div style={{background:"#D0EDF7"}}>
             <Header/>
             <AppRouter/>
             <Footer/>

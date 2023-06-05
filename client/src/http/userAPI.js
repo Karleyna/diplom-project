@@ -12,6 +12,14 @@ export const updateUser = async (id,email,FIO,telephone,age) => {
     localStorage.setItem('token',data.token);
     return jwtDecode(data.token);
 }
+export const updateUserRole = async (id, role) => {
+    const {data} = await $authHost.put('api/user/' + id,{role});
+    return data;
+}
+export const deleteUser = async (id) => {
+    const {data} = await $authHost.delete('api/user/users/' + id)
+    return data
+}
 export const login = async (email, password) => {
     const {data} = await $host.post('api/user/login',{email,password});
     localStorage.setItem('token',data.token);
@@ -26,7 +34,7 @@ export const fetchOneUser = async (id) => {
     const {data} = await $host.get('api/user/users/' + id)
     return data
 }
-export const fetchUsers = async (categoryId, page, limit= 5) => {
-    const {data} = await $host.get('api/user/users/')
+export const fetchUsers = async () => {
+    const {data} = await $host.get('api/user/users')
     return data
 }

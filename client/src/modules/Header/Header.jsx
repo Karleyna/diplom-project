@@ -62,12 +62,12 @@ const Header = observer(() => {
                                     <MyLink to={MEDICAL_ROUTE} >Medical</MyLink>
                                     <MyLink to={USEFUL_ROUTE} >Useful page</MyLink>
                                     <MyLink to={PERSONAL_ROUTE} >Personal cabinet</MyLink>
+                                    <MyLink to={COURSE_ROUTE} >Course</MyLink>
                                     <MyLink onClick={()=>logOut()} to='/'>Exit</MyLink>
                                 </nav>
                             :
                               <nav className="catalog-navigation-buttons">
                                 <MyLink to={MEDICAL_ROUTE} >Medical</MyLink>
-                                <MyLink to={COURSE_ROUTE} >Course</MyLink>
                                 <MyLink to={LOGIN_ROUTE} >Войти</MyLink>
                               </nav>
                         }
