@@ -1,11 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Button, Dropdown, Form, Row, Col} from "react-bootstrap";
+import {Button, Dropdown, Form} from "react-bootstrap";
 import {Context} from "../../index";
 import {createPost, fetchPosts, fetchCategories} from "../../http/postAPI";
 import {observer} from "mobx-react-lite";
 import Modal from "../../ui/Modal/Modal";
 import MyInput from "../../ui/inputs/MyInput";
-import MyButton from "../../ui/buttons/MyButton";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import classes from "./CreatePost.module.css";
 

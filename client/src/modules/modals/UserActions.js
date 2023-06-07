@@ -1,82 +1,71 @@
-import React, {useEffect, useState} from 'react';
-import {Form, Button, Row} from "react-bootstrap";
-import {createCategory, deleteCategory, fetchCategories, updateCategory} from "../../http/postAPI";
+import React from 'react';
+import {useEffect, useState} from "react";
+import {Button, Form, Row} from "react-bootstrap";
 import Modal from "../../ui/Modal/Modal";
 import MyInput from "../../ui/inputs/MyInput";
+import {deleteUser, fetchUsers, updateUserRole} from "../../http/userAPI";
 
-
-const CreateCategory = ({show, onHide}) => {
+const UserActions = ({show, onHide}) => {
     const [value, setValue] = useState('');
-    const [idCategory, setIdCategory] = useState('');
-    const [categories, setCategories] = useState([]);
+    const [idUser, setIdUser] = useState('');
+    const [users, setUsers] = useState([]);
     let results = [];
     useEffect(() => {
-        fetchCategories().then(data => setCategories(data))
-    }, []);
-    categories.forEach((category, index) => {
+         fetchUsers().then(data =>setUsers(data.rows));
+
+    }, [])
+    users.forEach((user, index) => {
         results.push(
-            <Row key={category.id}
+            <Row key={user.id}
                  style={{
                      background: index % 2 === 0 ? 'lightgray' : 'white',
                      padding: 10,
                      width: '70%',
                      borderRadius: '1vh'
                  }}>
-                {category.id}: {category.name}
-
+                {user.id}: {user.email}, {user.role}
             </Row>
         )
     });
     const updateResults = async () => {
         let data;
-        data = await fetchCategories();
-        setCategories(data);
-        setIdCategory('');
+        data = await fetchUsers();
+        setUsers(data.rows);
+        setIdUser('');
         results = [];
         setValue('');
-        categories.forEach((category, index) => {
+        users.forEach((user, index) => {
             results.push(
-                <Row key={category.id}
+                <Row key={user.id}
                      style={{
                          background: index % 2 === 0 ? 'lightgray' : 'white',
                          padding: 10,
                          width: '70%',
                          borderRadius: '1vh'
                      }}>
-                    {category.id}: {category.name}
-
+                    {user.id}: {user.email}, {user.role}
                 </Row>
             )
         });
     }
-    const addCategory = async () => {
-        try {
-            await createCategory({name: value});
-            await updateResults();
-        } catch (e) {
-            alert(e.response.data.message)
-        }
 
-
-    }
-    const deleteCategoryById = async () => {
+    const deleteUserById = async () => {
         try {
-            await deleteCategory(idCategory);
+            await deleteUser(idUser);
             await updateResults();
         } catch (e) {
             alert(e.response.data.message)
         }
 
     }
-    const updateCategoryById = async () => {
+    const updateUserRoleById = async () => {
         try {
-            await updateCategory(idCategory, value);
+            await updateUserRole(idUser, value);
             await updateResults();
         } catch (e) {
             alert(e.response.data.message)
         }
-
-    }
+    };
 
 
     return (
@@ -85,7 +74,7 @@ const CreateCategory = ({show, onHide}) => {
             setActive={onHide}
         >
             <h3>
-                Действия с категориями
+                Действия с пользователями
             </h3>
 
             <section>
@@ -94,23 +83,22 @@ const CreateCategory = ({show, onHide}) => {
                         style={{display: 'flex', justifyContent: 'space-around', margin: '1vh', flexFlow: 'column'}}>
                         <MyInput
                             style={{margin: '1vh'}}
-                            value={idCategory}
-                            onChange={e => setIdCategory(e.target.value)}
-                            placeholder={"Введите ID раздела"}
+                            value={idUser}
+                            onChange={e => setIdUser(e.target.value)}
+                            placeholder={"Введите ID пользователя"}
                         />
                         <MyInput
                             style={{margin: '1vh'}}
                             value={value}
                             onChange={e => setValue(e.target.value)}
-                            placeholder={"Введите название раздела"}
+                            placeholder={"Введите роль пользователя"}
                         />
                     </section>
                 </Form>
             </section>
             <section style={{display: 'flex', justifyContent: 'space-around', margin: '1vh'}}>
-                <Button variant="outline-success" onClick={addCategory}>Добавить</Button>
-                <Button variant="outline-success" onClick={deleteCategoryById}>Delete</Button>
-                <Button variant="outline-success" onClick={updateCategoryById}>Update</Button>
+                <Button variant="outline-success" onClick={deleteUserById}>Delete</Button>
+                <Button variant="outline-success" onClick={updateUserRoleById}>Update</Button>
                 <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
             </section>
             <section>
@@ -131,4 +119,4 @@ const CreateCategory = ({show, onHide}) => {
     );
 };
 
-export default CreateCategory;
+export default UserActions;
