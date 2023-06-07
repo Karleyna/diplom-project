@@ -30,9 +30,14 @@ class postsController {
         limit = limit || 9;
         let offset = page * limit - limit;
         let posts;
+        if (offset< 0){
+            posts = await Posts.findAll();
+            return res.json(posts)
+        }
         if (!categoryId) {
             posts = await Posts.findAndCountAll({limit, offset})
         }
+
         if (categoryId) {
             posts = await Posts.findAndCountAll({where: {categoryId}, limit, offset})
         }

@@ -8,6 +8,7 @@ import {Context} from "../../index";
 import {useEffect} from "react";
 import {fetchPosts} from "../../http/postAPI";
 import UserActions from "../../modules/modals/UserActions";
+import PostInfoActions from "../../modules/modals/PostInfActions";
 
 
 
@@ -22,6 +23,7 @@ const AdminPage = observer(() => {
     const [categoryVisible, setCategoryVisible] = useState(false);
     const [usersVisible, setUsersVisible] = useState(false);
     const [postVisible, setPostVisible] = useState(false);
+    const [postInfoVisible, setPostInfoVisible] = useState(false);
     return <>
         <div style={{height: '100vh'}}>
             <div style={{height: '100%'}}>
@@ -38,12 +40,14 @@ const AdminPage = observer(() => {
                             <MyButton onClick={() => setUsersVisible(true)}>Назначить тренера</MyButton>
                         </div>
                         <div>
-                            <MyButton>Создать прайс-лист</MyButton>
+                            <MyButton onClick={() => setPostVisible(true)}>Создать прайс-лист</MyButton>
+                            <MyButton onClick={() => setPostInfoVisible(true)}>Создать info</MyButton>
                         </div>
                     </section>
                     <CategoryActions show={categoryVisible} onHide={() => setCategoryVisible(false)}/>
                     <UserActions show={usersVisible} onHide={() => setUsersVisible(false)}/>
                     <CreatePost show={postVisible} onHide={() => setPostVisible(false)}/>
+                    <PostInfoActions show={postInfoVisible} onHide={() => setPostInfoVisible(false)}/>
 
                 </main>
             </div>

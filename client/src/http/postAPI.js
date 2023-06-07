@@ -26,7 +26,7 @@ export const createPost = async (post) => {
 }
 
 export const fetchPosts = async (categoryId, page, limit= 5) => {
-    const {data} = await $host.get('api/posts', {params: {
+    const {data} = await $host.get('api/posts/', {params: {
             categoryId, page, limit
         }})
     return data

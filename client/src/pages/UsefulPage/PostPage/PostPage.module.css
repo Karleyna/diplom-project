@@ -15,8 +15,8 @@
     flex-flow: column;
 }
 .img img {
-    width: 25vw;
-    height: 32vh;
+    max-width: 25vw;
+    max-height: 45vh;
 }
 .description{
     display: flex;

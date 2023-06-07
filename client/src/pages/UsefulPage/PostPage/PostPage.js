@@ -5,6 +5,8 @@ import {Link, useParams} from 'react-router-dom'
 import {fetchOnePost, fetchPostInfo} from "../../../http/postAPI";
 import classes from "./PostPage.module.css";
 import {useEffect, useState} from "react";
+import MyLink from "../../../ui/links/MyLink";
+import {USEFUL_ROUTE} from "../../../utils/consts";
 
 
 const PostPage = () => {
@@ -50,6 +52,10 @@ const PostPage = () => {
             {results}
         </div>
         </section>
+        <div style={{marginTop:'1vw'}}>
+            <MyLink to={USEFUL_ROUTE} >Вернуться</MyLink>
+        </div>
+
     </div>
     </div>
 

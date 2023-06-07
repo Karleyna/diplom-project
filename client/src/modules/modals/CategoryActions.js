@@ -5,7 +5,7 @@ import Modal from "../../ui/Modal/Modal";
 import MyInput from "../../ui/inputs/MyInput";
 
 
-const CreateCategory = ({show, onHide}) => {
+const CategoryActions = ({show, onHide}) => {
     const [value, setValue] = useState('');
     const [idCategory, setIdCategory] = useState('');
     const [categories, setCategories] = useState([]);
@@ -131,4 +131,4 @@ const CreateCategory = ({show, onHide}) => {
     );
 };
 
-export default CreateCategory;
+export default CategoryActions;

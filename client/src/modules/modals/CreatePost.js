@@ -53,7 +53,7 @@ const CreatePost = observer(({show, onHide}) => {
             active={show}
             setActive={onHide}>
             <section>
-                <h2 className={classes}>
+                <h2 >
                     Добавить пост
                 </h2>
             </section>
