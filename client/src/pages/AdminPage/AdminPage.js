@@ -8,7 +8,7 @@ import {Context} from "../../index";
 import {useEffect} from "react";
 import {fetchPosts} from "../../http/postAPI";
 import UserActions from "../../modules/modals/UserActions";
-import PostInfoActions from "../../modules/modals/PostInfActions";
+import PostInfoActions from "../../modules/modals/PostInfoActions";
 
 
 
@@ -41,6 +41,9 @@ const AdminPage = observer(() => {
                         </div>
                         <div>
                             <MyButton onClick={() => setPostVisible(true)}>Создать прайс-лист</MyButton>
+
+                        </div>
+                        <div>
                             <MyButton onClick={() => setPostInfoVisible(true)}>Создать info</MyButton>
                         </div>
                     </section>

@@ -9,6 +9,7 @@ import Pages from "../../modules/Pages";
 
 const UsefulPage = observer(() => {
     const {post} = useContext(Context);
+
     useEffect(() => {
         fetchCategories().then(data => post.setCategories(data))
         fetchPosts(null, 1, 5).then(data => {

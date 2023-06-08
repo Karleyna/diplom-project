@@ -3,6 +3,7 @@ const uuid = require('uuid');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {User} = require('../models/models');
+const {Op} = require("sequelize");
 
 
 const generateJwt = (id, email, role) => {
@@ -53,8 +54,21 @@ class UserController {
 
     async getAll(req, res) {
         try {
-            const users = await User.findAndCountAll();
-            return res.json(users);
+            const {userEmail} = req.query;
+            if (userEmail) {
+                const users = await User.findAll({
+                    where: {
+                        email: {
+                            [Op.like]: `%${userEmail}%`
+                        }
+                    }
+                })
+                return res.json(users);
+            } else {
+                const users = await User.findAndCountAll();
+                return res.json(users);
+            }
+
         } catch (e) {
             res.status(500).json(e)
         }
@@ -64,12 +78,11 @@ class UserController {
         try {
             const {id} = req.params;
             if (!id) {
-                res.status(400).json({message:"ID не указан"});
+                res.status(400).json({message: "ID не указан"});
             }
             const user = await User.findByPk(id);
             return res.json(user);
-        }
-        catch (e) {
+        } catch (e) {
             res.status(500).json(e.message)
         }
 
@@ -82,7 +95,7 @@ class UserController {
             if (!id) {
                 res.status(400).json({message: "ID не указан"});
             }
-            const updatedUser = await User.update({email, age, telephone, role, FIO}, {where: {id:id}});
+            const updatedUser = await User.update({email, age, telephone, role, FIO}, {where: {id: id}});
             const token = generateJwt(id, email, role);
             return res.json({token});
         } catch (e) {
@@ -97,7 +110,7 @@ class UserController {
             if (!id) {
                 res.status(400).json({message: "ID не указан"});
             }
-            const updatedUser = await User.update({role}, {where: {id:id}});
+            const updatedUser = await User.update({role}, {where: {id: id}});
             return res.json(updatedUser);
         } catch (e) {
             res.status(500).json(e.message)
@@ -108,9 +121,9 @@ class UserController {
         try {
             const {id} = req.params;
             if (!id) {
-                res.status(400).json({message:"ID не указан"});
+                res.status(400).json({message: "ID не указан"});
             }
-            const user = await User.destroy({where: {id:id}});
+            const user = await User.destroy({where: {id: id}});
             return res.json(user);
 
         } catch (e) {

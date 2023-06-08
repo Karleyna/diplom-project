@@ -21,17 +21,20 @@ const PostPage = () => {
     useEffect(() => {
         fetchPostInfo(id).then(data => setPostInfo(data))
     }, [])
-    postInfo.forEach((postI,index)=>{
+    postInfo.forEach((postI, index) => {
         results.push(
             <Row key={postI.id}
-                 style={{background: index % 2 === 0 ? 'lightgray' : 'white', padding: 10, width: '70%', borderRadius: '1vh'}}>
+                 style={{
+                     background: index % 2 === 0 ? 'lightgray' : 'white',
+                     padding: 10,
+                     width: '70%',
+                     borderRadius: '1vh'
+                 }}>
                 {postI.title}: {postI.description}
                 <Link href="32e0aa02-936a-4f22-b740-f27666126f79.jpg" target="_blank">{postI.title}</Link>
             </Row>
         )
     })
-
-    console.log(postInfo)
 
     return <div>
         ` <div style={{height: '100vh'}} className={classes.main}>
@@ -48,12 +51,12 @@ const PostPage = () => {
         <section style={{width: '100%'}} className={classes.img}>
             <h1>Описание</h1>
 
-        <div className={classes.description}>
-            {results}
-        </div>
+            <div className={classes.description}>
+                {results}
+            </div>
         </section>
-        <div style={{marginTop:'1vw'}}>
-            <MyLink to={USEFUL_ROUTE} >Вернуться</MyLink>
+        <div style={{marginTop: '1vw'}}>
+            <MyLink to={USEFUL_ROUTE}>Вернуться</MyLink>
         </div>
 
     </div>

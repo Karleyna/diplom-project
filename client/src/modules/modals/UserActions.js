@@ -3,15 +3,16 @@ import {useEffect, useState} from "react";
 import {Button, Form, Row} from "react-bootstrap";
 import Modal from "../../ui/Modal/Modal";
 import MyInput from "../../ui/inputs/MyInput";
-import {deleteUser, fetchUsers, updateUserRole} from "../../http/userAPI";
+import {deleteUser, fetchUsers, fetchUsersTrowEmail, updateUserRole} from "../../http/userAPI";
 
 const UserActions = ({show, onHide}) => {
     const [value, setValue] = useState('');
     const [idUser, setIdUser] = useState('');
+    const [userEmail, setUserEmail] = useState('');
     const [users, setUsers] = useState([]);
     let results = [];
     useEffect(() => {
-         fetchUsers().then(data =>setUsers(data.rows));
+        fetchUsers().then(data => setUsers(data.rows));
 
     }, [])
     users.forEach((user, index) => {
@@ -29,7 +30,14 @@ const UserActions = ({show, onHide}) => {
     });
     const updateResults = async () => {
         let data;
-        data = await fetchUsers();
+        if (userEmail === '') {
+            data = await fetchUsers();
+            setUsers(data.rows);
+        }
+        else{
+            data = await fetchUsersTrowEmail(userEmail)
+            setUsers(data)
+        }
         setUsers(data.rows);
         setIdUser('');
         results = [];
@@ -102,6 +110,13 @@ const UserActions = ({show, onHide}) => {
                 <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
             </section>
             <section>
+                <MyInput
+                    style={{margin: '1vh'}}
+                    value={userEmail}
+                    onChange={e => setUserEmail(e.target.value)}
+                    placeholder={"Введите почту для поиска"}
+                />
+                <Button variant="outline-success" onClick={updateResults}>Search</Button>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'center',
