@@ -1,9 +1,10 @@
 const uuid = require('uuid')
 const path = require('path');
-const {Posts, PostInfo} = require('../models/models')
+const {Posts, PostInfo, User} = require('../models/models')
 const ApiError = require('../errors/ApiError');
 const fs = require("fs");
 const {postPropertyController} = require('./postPropertyController');
+const {Op} = require("sequelize");
 
 class postsController {
     async create(req, res, next) {
@@ -25,15 +26,25 @@ class postsController {
 
 
     async getAll(req, res) {
-        let {categoryId, limit, page} = req.query;
+        let {categoryId, limit, page, postName} = req.query;
         page = page || 1;
         limit = limit || 9;
         let offset = page * limit - limit;
         let posts;
-        if (offset< 0){
+        if (offset< 0 && !postName){
             posts = await Posts.findAll();
             return res.json(posts)
+        } else if (offset< 0 && postName) {
+            const posts = await Posts.findAll({
+                where: {
+                    name: {
+                        [Op.like]: `%${postName}%`
+                    }
+                }
+            })
+            return res.json(posts);
         }
+
         if (!categoryId) {
             posts = await Posts.findAndCountAll({limit, offset})
         }

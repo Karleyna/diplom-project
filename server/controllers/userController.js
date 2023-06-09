@@ -54,7 +54,7 @@ class UserController {
 
     async getAll(req, res) {
         try {
-            const {userEmail} = req.query;
+            const {userEmail} = req.query || null;
             if (userEmail) {
                 const users = await User.findAll({
                     where: {

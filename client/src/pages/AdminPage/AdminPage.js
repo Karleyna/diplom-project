@@ -13,13 +13,6 @@ import PostInfoActions from "../../modules/modals/PostInfoActions";
 
 
 const AdminPage = observer(() => {
-    const {post} = useContext(Context)
-    useEffect(() => {
-        fetchPosts(post.selectedCategory.id, post.page, 5).then(data => {
-            post.setPosts(data.rows)
-            post.setTotalCount(data.count)
-        })
-    }, [post.page, post.selectedCategory])
     const [categoryVisible, setCategoryVisible] = useState(false);
     const [usersVisible, setUsersVisible] = useState(false);
     const [postVisible, setPostVisible] = useState(false);
@@ -49,7 +42,7 @@ const AdminPage = observer(() => {
                     </section>
                     <CategoryActions show={categoryVisible} onHide={() => setCategoryVisible(false)}/>
                     <UserActions show={usersVisible} onHide={() => setUsersVisible(false)}/>
-                    <CreatePost show={postVisible} onHide={() => setPostVisible(false)}/>
+                    {/*<CreatePost show={postVisible} onHide={() => setPostVisible(false)}/>*/}
                     <PostInfoActions show={postInfoVisible} onHide={() => setPostInfoVisible(false)}/>
 
                 </main>

@@ -38,7 +38,6 @@ const UserActions = ({show, onHide}) => {
             data = await fetchUsersTrowEmail(userEmail)
             setUsers(data)
         }
-        setUsers(data.rows);
         setIdUser('');
         results = [];
         setValue('');
@@ -55,6 +54,7 @@ const UserActions = ({show, onHide}) => {
                 </Row>
             )
         });
+        setUserEmail('');
     }
 
     const deleteUserById = async () => {

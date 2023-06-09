@@ -39,6 +39,6 @@ export const fetchUsers = async () => {
     return data
 }
 export const fetchUsersTrowEmail = async (userEmail) => {
-    const {data} = await $host.get(`api/user/users/?userEmail=${userEmail}`)
+    const {data} = await $host.get(`api/user/users/`, {params: {userEmail: userEmail}})
     return data
 }

@@ -1,21 +1,20 @@
 import React from 'react';
 import {useEffect, useState} from "react";
-import {fetchPostInfo, fetchPosts} from "../../http/postAPI";
+import {createPostInfo, fetchPostInfo, fetchPosts, fetchPostsTrowName} from "../../http/postAPI";
 import {Button, Dropdown, Form, Row} from "react-bootstrap";
 import Modal from "../../ui/Modal/Modal";
 import MyInput from "../../ui/inputs/MyInput";
 
 const PostInfoActions = ({show, onHide}) => {
-    const [value, setValue] = useState('');
+    const [searchValue, setSearchValue] = useState('');
     const [postName, setPostName] = useState('');
     const [postId, setPostId] = useState(6);
+    const [titlePostInfo, setTitlePostInfo] = useState('');
+    const [description, setDescription] = useState('');
     const [idPostInfo, setIdPostInfo] = useState('');
     const [postInfo, setPostInfo] = useState([]);
     const [posts, setPosts] = useState([]);
     let results = [];
-    useEffect(() => {
-        fetchPostInfo(1).then(data => setPostInfo(data))
-    }, [])
     useEffect(() => {
         fetchPosts(null, -1).then(data => setPosts(data))
     }, [])
@@ -34,12 +33,12 @@ const PostInfoActions = ({show, onHide}) => {
     });
 
     const updateResults = async () => {
-       let data;
-       data = await fetchPostInfo(postId);
+        let data;
+        data = await fetchPostInfo(postId);
         setPostInfo(data);
         // setIdPostInfo('');
         results = [];
-        // setValue('');
+        // setDescription('');
         postInfo.forEach((property, index) => {
             results.push(
                 <Row key={property.id}
@@ -55,13 +54,35 @@ const PostInfoActions = ({show, onHide}) => {
             )
         });
     }
-    // const addPostInfo = async () => {
-    //     try {
-    //         await createPostInfo({name: value});
-    //         await updateResults();
-    //     } catch (e) {
-    //         alert(e.response.data.message)
-    //     }
+    const updateDropdown = async () => {
+        let data;
+        if (searchValue === '') {
+            data = await fetchPosts(null, -1)
+        } else {
+            data = await fetchPostsTrowName(-1, searchValue);
+        }
+        setPosts(data);
+        posts.map(post =>
+            <Dropdown.Item
+                key={post.id}
+                onClick={() => {
+                    setPostId(post.id)
+                    setPostName(post.name)
+                }}
+            >
+                {post.name}
+            </Dropdown.Item>
+        )
+    }
+    const addPostInfo = async () => {
+        try {
+            await createPostInfo(titlePostInfo, description, postId);
+            await updateResults();
+            console.log(titlePostInfo, description, postId)
+        } catch (e) {
+            alert(e.response.data.message)
+        }
+    }
     //
     //
     // }
@@ -74,15 +95,15 @@ const PostInfoActions = ({show, onHide}) => {
     //     }
     //
     // }
-    // const updatePostInfoById = async () => {
-    //     try {
-    //         await updatePostInfo(idPostInfo, value);
-    //         await updateResults();
-    //     } catch (e) {
-    //         alert(e.response.data.message)
-    //     }
-    //
-    // }
+    const updatePostInfoById = async () => {
+        try {
+            await updatePostInfo(idPostInfo, description);
+            await updateResults();
+        } catch (e) {
+            alert(e.response.data.message)
+        }
+
+    }
     //
 
     return (
@@ -97,10 +118,19 @@ const PostInfoActions = ({show, onHide}) => {
             <section>
                 <Form>
                     <section style={{display: 'flex', justifyContent: 'space-around', margin: '1vh'}}>
-                        <Dropdown className="mt-2 mb-2">
+                        <Dropdown className="mt-2 mb-lg-2">
                             <Dropdown.Toggle
                                 variant="success">{postName || "Выберите публикацию"}</Dropdown.Toggle>
                             <Dropdown.Menu>
+                                <MyInput
+                                    style={{margin: '0.5vh'}}
+                                    value={searchValue}
+                                    onChange={async e => {
+                                        setSearchValue(e.target.value);
+                                        await updateDropdown();
+                                    }}
+                                    placeholder={"Поиск"}
+                                />
                                 {posts.map(post =>
                                     <Dropdown.Item
                                         key={post.id}
@@ -116,26 +146,25 @@ const PostInfoActions = ({show, onHide}) => {
                         </Dropdown>
                         <Button variant="outline-success" onClick={updateResults}>Обновить результаты</Button>
                     </section>
-
                     <section
                         style={{display: 'flex', justifyContent: 'space-around', margin: '1vh', flexFlow: 'column'}}>
                         <MyInput
                             style={{margin: '1vh'}}
-                            value={idPostInfo}
-                            onChange={e => setIdPostInfo(e.target.value)}
-                            placeholder={"Введите ID раздела"}
+                            value={titlePostInfo}
+                            onChange={e => setTitlePostInfo(e.target.value)}
+                            placeholder={"Введите заголовок"}
                         />
                         <MyInput
                             style={{margin: '1vh'}}
-                            value={value}
-                            onChange={e => setValue(e.target.value)}
-                            placeholder={"Введите название раздела"}
+                            value={description}
+                            onChange={e => setDescription(e.target.value)}
+                            placeholder={"Введите описание"}
                         />
                     </section>
                 </Form>
             </section>
             <section style={{display: 'flex', justifyContent: 'space-around', margin: '1vh'}}>
-                {/*<Button variant="outline-success" onClick={addPostInfo}>Добавить</Button>*/}
+                <Button variant="outline-success" onClick={addPostInfo}>Добавить</Button>
                 {/*<Button variant="outline-success" onClick={deletePostInfoById}>Delete</Button>*/}
                 {/*<Button variant="outline-success" onClick={updatePostInfoById}>Update</Button>*/}
 
