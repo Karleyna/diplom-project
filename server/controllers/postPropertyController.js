@@ -76,7 +76,7 @@ class postPropertyController {
             let fileName;
             if (req.files) {
                 const propFile = await PostInfo.findByPk(req.params.id);
-                if (propFile.file !== null){
+                if (propFile.file !== null) {
                     await fs.unlinkSync(path.resolve(__dirname, '..', 'static', propFile.file.toString()));
                 }
                 const {file} = req.files;
@@ -106,10 +106,10 @@ class postPropertyController {
                 res.status(400).json({message: "Не указано id записи"});
             }
             const propFile = await PostInfo.findByPk(req.params.id);
-            if (propFile.file.toString()){
+            if (propFile.file !== null) {
                 await fs.unlinkSync(path.resolve(__dirname, '..', 'static', propFile.file.toString()));
-            }
-            const property = await PostInfo.destroy({where: {postId :req.params.postId, id: req.params.id}});
+           }
+            const property = await PostInfo.destroy({where: {postId: req.params.postId, id: req.params.id}});
             res.json(property)
         } catch (e) {
             next(ApiError.badRequest(e.message))

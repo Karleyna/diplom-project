@@ -52,14 +52,12 @@ const Header = observer(() => {
                             : user.isAuth && token.role === 'trainer' ?
                             <nav className="catalog-navigation-buttons">
                                 <MyLink to={TRAINER_ROUTE} >Trainer</MyLink>
-                                <MyLink to={MEDICAL_ROUTE} >Medical</MyLink>
                                 <MyLink to={USEFUL_ROUTE} >Useful page</MyLink>
                                 <MyLink to={PERSONAL_ROUTE} >Personal cabinet</MyLink>
                                 <MyLink onClick={()=>logOut()} to='/'>Exit</MyLink>
                             </nav>
                            :user.isAuth ?
                                 <nav className="catalog-navigation-buttons">
-                                    <MyLink to={MEDICAL_ROUTE} >Medical</MyLink>
                                     <MyLink to={USEFUL_ROUTE} >Useful page</MyLink>
                                     <MyLink to={PERSONAL_ROUTE} >Personal cabinet</MyLink>
                                     <MyLink to={COURSE_ROUTE} >Course</MyLink>
@@ -67,7 +65,6 @@ const Header = observer(() => {
                                 </nav>
                             :
                               <nav className="catalog-navigation-buttons">
-                                <MyLink to={MEDICAL_ROUTE} >Medical</MyLink>
                                 <MyLink to={LOGIN_ROUTE} >Войти</MyLink>
                               </nav>
                         }

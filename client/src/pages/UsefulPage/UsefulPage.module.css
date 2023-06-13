@@ -5,12 +5,12 @@
     flex-flow: column;
     height: 80vh;
     width: 100vw;
-    background: linear-gradient(rgba(16, 41, 42, 1), transparent);
+
 }
 .header{
-
     width: 100%;
     height: 20vh;
+    background: linear-gradient(rgba(16, 41, 42, 1), transparent);
     display: flex;
     align-items: center;
     justify-content: center;

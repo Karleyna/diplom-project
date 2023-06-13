@@ -1,9 +1,8 @@
 const uuid = require('uuid')
 const path = require('path');
-const {Posts, PostInfo, User} = require('../models/models')
+const {Posts, PostInfo} = require('../models/models')
 const ApiError = require('../errors/ApiError');
 const fs = require("fs");
-const {postPropertyController} = require('./postPropertyController');
 const {Op} = require("sequelize");
 
 class postsController {
@@ -109,7 +108,7 @@ class postsController {
             await post.destroy()
             res.json(post)
         } catch (e) {
-            next(ApiError.badRequest(e.message))
+            next(ApiError.badRequest(e.message));
         }
     }
 

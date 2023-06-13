@@ -59,8 +59,13 @@ const UserActions = ({show, onHide}) => {
 
     const deleteUserById = async () => {
         try {
-            await deleteUser(idUser);
-            await updateResults();
+            if (idUser===''){
+                alert("Введите ID пользователя")
+            }
+            else{
+                await deleteUser(idUser);
+                await updateResults();
+            }
         } catch (e) {
             alert(e.response.data.message)
         }
@@ -68,8 +73,17 @@ const UserActions = ({show, onHide}) => {
     }
     const updateUserRoleById = async () => {
         try {
-            await updateUserRole(idUser, value);
-            await updateResults();
+            if (idUser===''){
+                alert("Введите ID пользователя")
+            }
+            else if (value===''){
+                alert("Введите роль пользователя")
+            }
+            else{
+                await updateUserRole(idUser, value);
+                await updateResults();
+            }
+
         } catch (e) {
             alert(e.response.data.message)
         }
@@ -81,8 +95,8 @@ const UserActions = ({show, onHide}) => {
             active={show}
             setActive={onHide}
         >
-            <h3>
-                Действия с пользователями
+            <h3 style={{fontSize: '2.5rem'}}>
+                Назначение сотрудников
             </h3>
 
             <section>
@@ -105,18 +119,18 @@ const UserActions = ({show, onHide}) => {
                 </Form>
             </section>
             <section style={{display: 'flex', justifyContent: 'space-around', margin: '1vh'}}>
-                <Button variant="outline-success" onClick={deleteUserById}>Delete</Button>
-                <Button variant="outline-success" onClick={updateUserRoleById}>Update</Button>
+                <Button variant="outline-success" onClick={deleteUserById}>Удалить</Button>
+                <Button variant="outline-success" onClick={updateUserRoleById}>Обновить</Button>
                 <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
             </section>
-            <section>
+            <section style={{display: 'flex', justifyContent: 'space-around', margin: '1vh', flexFlow:'column'}}>
                 <MyInput
                     style={{margin: '1vh'}}
                     value={userEmail}
                     onChange={e => setUserEmail(e.target.value)}
                     placeholder={"Введите почту для поиска"}
                 />
-                <Button variant="outline-success" onClick={updateResults}>Search</Button>
+                <Button style={{width:'10%', marginLeft:'1.5vh'}} variant="outline-success" onClick={updateResults}>Поиск</Button>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'center',

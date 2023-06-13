@@ -2,15 +2,14 @@ import React from 'react';
 import {Button, Card, Col, Container, Image, Form, Row} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link, useParams} from 'react-router-dom'
-import {fetchOnePost, fetchPostInfo} from "../../../http/postAPI";
+import {fetchOnePost} from "../../../http/postAPI";
+import {fetchPostInfo} from "../../../http/postInfoAPI";
 import classes from "./PostPage.module.css";
 import {useEffect, useState} from "react";
 import MyLink from "../../../ui/links/MyLink";
 import {USEFUL_ROUTE} from "../../../utils/consts";
 
-
 const PostPage = () => {
-
     const [post, setPost] = useState([])
     const [postInfo, setPostInfo] = useState([])
     const {id} = useParams()
@@ -31,7 +30,7 @@ const PostPage = () => {
                      borderRadius: '1vh'
                  }}>
                 {postI.title}: {postI.description}
-                <Link href="32e0aa02-936a-4f22-b740-f27666126f79.jpg" target="_blank">{postI.title}</Link>
+                <Link href={postI.file} target="_blank">{postI.title}</Link>
             </Row>
         )
     })

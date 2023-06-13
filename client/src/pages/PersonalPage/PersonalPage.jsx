@@ -39,7 +39,10 @@ const PersonalPage = observer(() => {
     };
 
     return <>
-        <section style={{height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <section  style={{height: '30vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <h2> Личный кабинет</h2>
+        </section>
+        <section style={{height: '75vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <section>
                 <div className={classes.currentValue}>
                     <h3>Текущие данные профиля</h3>

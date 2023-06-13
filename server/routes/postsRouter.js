@@ -5,7 +5,7 @@ const postPropertyController = require('../controllers/postPropertyController');
 const checkRole = require('../middleware/checkRoleMiddleware');
 const authMiddleware = require('../middleware/authMiddleware.js')
 
-router.post('/', authMiddleware, checkRole('admin', 'trainer'), postsController.create);
+router.post('/', authMiddleware, checkRole( 'trainer'|| 'admin'), postsController.create);
 router.get('/', postsController.getAll);
 router.get('/:id', postsController.getOne);
 router.put('/:id', authMiddleware, checkRole('admin', 'trainer'), postsController.update);

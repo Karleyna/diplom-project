@@ -1,5 +1,5 @@
 .modal{
-    height: 100vh;
+    height: 110vh;
     width: 100vw;
     background-color: rgba(0,0,0,0.4);
     position: fixed;
@@ -11,9 +11,11 @@
    opacity: 0;
     pointer-events: none;
     transition: 0.5s;
+    z-index:5;
 }
 
 .modalActive{
+    overflow: hidden;
     opacity: 1;
     transform: scale(1) ;
     pointer-events: all;
@@ -30,7 +32,7 @@
 }
 
 .content{
-
+    max-height: 80vh;
     padding: 2vw;
     border-radius: 12px;
     background-color: white;
@@ -48,6 +50,8 @@
     width: 50vw;
     transform: scale(1) ;
     position: absolute;
+    max-height: 90vh;
+    overflow: auto;
 }
 .MyButton{
     font-size: 0.8rem;

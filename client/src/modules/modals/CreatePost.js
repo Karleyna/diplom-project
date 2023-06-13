@@ -1,51 +1,116 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Button, Dropdown, Form} from "react-bootstrap";
+import {Button, Dropdown, Form, Row} from "react-bootstrap";
 import {Context} from "../../index";
-import {createPost, fetchPosts, fetchCategories} from "../../http/postAPI";
+import {createPost, fetchPosts, updatePost, deletePost} from "../../http/postAPI";
+import {fetchCategories} from "../../http/categoryAPI";
 import {observer} from "mobx-react-lite";
 import Modal from "../../ui/Modal/Modal";
 import MyInput from "../../ui/inputs/MyInput";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import classes from "./CreatePost.module.css";
 
 
 const CreatePost = observer(({show, onHide}) => {
     const {post} = useContext(Context)
-    const [name, setName] = useState('')
-    const [fileImg, setFileImg] = useState(null)
-    // const [info, setInfo] = useState([])
-    const [file,setFile] = useState(null);
-
+    const [name, setName] = useState('');
+    const [idPost, setIdPost] = useState('');
+    const [fileImg, setFileImg] = useState(null);
+    let results = [];
+    let categories = new Map();
     useEffect(() => {
         fetchCategories().then(data => post.setCategories(data));
-        fetchPosts().then(data => post.setPosts(data));
+        fetchPosts().then(data => post.setPosts(data.rows));
     }, [])
+    post.categories.forEach(category => {
+            categories.set(category.id, category.name)
+    })
 
-    // const addInfo = (e) => {
-    //     e.preventDefault();
-    //     setInfo([...info, {title: '', description: '', number: Date.now(), file:selectFile}])
-    // }
-    // const removeInfo = (number) => {
-    //     setInfo(info.filter(i => i.number !== number))
-    // }
-    // const changeInfo = (key, value, number) => {
-    //     setInfo(info.map(i => i.number === number ? {...i, [key]: value} : i))
-    // }
-    // const selectFile  = e =>{
-    //     setFile(e.target.files[0]);
-    // }
+    post.posts.forEach((property, index) => {
+        results.push(
+            <Row key={property.id}
+                 style={{
+                     background: index % 2 === 0 ? 'lightgray' : 'white',
+                     padding: 10,
+                     width: '90%',
+                     borderRadius: '1vh',
+                     wordBreak: 'break-all'
+                 }}>
+                {property.id} : {property.name}, раздел: {categories.get(property.categoryId)}
+
+            </Row>
+        )
+    })
 
     const selectFileImg = e => {
         setFileImg(e.target.files[0])
     }
 
-    const addPost = () => {
-        const formData = new FormData()
-        formData.append('name', name)
-        formData.append('img', fileImg)
-        formData.append('categoryId', post.selectedCategory.id)
-        formData.append('file', file)
-        createPost(formData).then(data => onHide())
+    const addPost = async () => {
+        let formData = new FormData();
+        if (post.selectedCategory.id === undefined){
+            alert("Выберете категорию")
+        }
+        else if (name===''){
+            alert("Введите название")
+        }
+        else {
+            formData.append('name', name);
+            formData.append('img', fileImg);
+            formData.append('categoryId', post.selectedCategory.id);
+            await createPost(formData);
+            await updateResults();
+            // setName('');
+            // setFileImg(null);
+        }
+    }
+    const updatePostById = async () => {
+        if (post.selectedCategory.id === undefined){
+            alert("Выберете категорию")
+        }
+        else if (idPost===''){
+            alert("Введите номер")
+        }
+        else {
+            const formData = new FormData()
+            formData.append('name', name)
+            formData.append('img', fileImg)
+            formData.append('categoryId', post.selectedCategory.id)
+            await updatePost(formData, idPost)
+            await updateResults();
+            setIdPost('');
+            setName('');
+            setFileImg(null);
+
+        }
+    }
+    const deletePostById = async () => {
+        if (idPost===''){
+            alert("Введите номер")
+        }
+        else {
+            await deletePost(idPost)
+            await updateResults();
+            setIdPost('');
+        }
+    }
+    const updateResults = async () => {
+        results = [];
+        let data = await fetchPosts();
+        post.setPosts(data.rows);
+        post.posts.forEach((property, index) => {
+            results.push(
+                <Row key={property.id}
+                     style={{
+                         background: index % 2 === 0 ? 'lightgray' : 'white',
+                         padding: 10,
+                         width: '90%',
+                         borderRadius: '1vh',
+                         wordBreak: 'break-all'
+                     }}>
+                    {property.id} : {property.name}, раздел: {categories.get(property.categoryId)}
+
+                </Row>
+            )
+        })
     }
 
     return (
@@ -53,8 +118,8 @@ const CreatePost = observer(({show, onHide}) => {
             active={show}
             setActive={onHide}>
             <section>
-                <h2 >
-                    Добавить пост
+                <h2 style={{fontSize: '2.5rem'}}>
+                    Действия с публикациями
                 </h2>
             </section>
             <section>
@@ -75,7 +140,12 @@ const CreatePost = observer(({show, onHide}) => {
                             </Dropdown.Menu>
                         </Dropdown>
                     </section>
-
+                    <MyInput
+                        style={{width: '100%', marginBottom:'1vh'}}
+                        value={idPost}
+                        onChange={e => setIdPost(e.target.value)}
+                        placeholder="Введите номер поста для удаления или обновления"
+                    />
                     <MyInput
                         style={{width: '100%'}}
                         value={name}
@@ -88,55 +158,16 @@ const CreatePost = observer(({show, onHide}) => {
                         onChange={selectFileImg}
                     />
                     <hr/>
-                    {/*<div className={classes.sectionBut}>*/}
-                    {/*    <MyButton*/}
-                    {/*        style={{fontSize: '1rem'}}*/}
-                    {/*        onClick={addInfo}*/}
-                    {/*    >*/}
-                    {/*        Добавить новый материал*/}
-                    {/*    </MyButton>*/}
-                    {/*</div>*/}
-
-                    {/*{info.map(i =>*/}
-                    {/*    <section className={classes.newMaterial} key={i.number}>*/}
-                    {/*        <Col md={3}>*/}
-                    {/*            <MyInput*/}
-                    {/*                value={i.title}*/}
-                    {/*                onChange={(e) => changeInfo('title', e.target.value, i.number)}*/}
-                    {/*                placeholder="Введите название подзаголовка"*/}
-                    {/*            />*/}
-                    {/*        </Col>*/}
-                    {/*        <Col md={5}>*/}
-                    {/*            <Form.Control*/}
-                    {/*                as="textarea"*/}
-                    {/*                value={i.description}*/}
-                    {/*                onChange={(e) => changeInfo('description', e.target.value, i.number)}*/}
-                    {/*                placeholder="Введите текст"*/}
-                    {/*            />*/}
-                    {/*        </Col>*/}
-                    {/*        <Col className={classes.delBtn} md={2.5}>*/}
-                    {/*            <MyButton*/}
-                    {/*                style={{fontSize: '1rem'}}*/}
-                    {/*                onClick={() => removeInfo(i.number)}*/}
-                    {/*            >*/}
-                    {/*                Удалить*/}
-                    {/*            </MyButton>*/}
-
-                    {/*        </Col>*/}
-                    {/*        <Col md={3}>*/}
-                    {/*            <Form.Control*/}
-                    {/*                className="mt-3 mr-3"*/}
-                    {/*                type="file"*/}
-                    {/*                onChange={selectFile}*/}
-                    {/*            />*/}
-                    {/*        </Col>*/}
-                    {/*    </section>*/}
-                    {/*)}*/}
+                    <div style={{display: 'flex', justifyContent: 'space-between', flexFlow:'column', alignItems:'center'}}>
+                        {results}
+                    </div>
                 </Form>
             </section>
-            <section className={classes.section}>
+            <section style={{margin: '1vw', display: 'flex', justifyContent: 'space-between'}}>
                 <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
                 <Button variant="outline-success" onClick={addPost}>Добавить</Button>
+                <Button variant="outline-success" onClick={updatePostById}>Обновить</Button>
+                <Button variant="outline-success" onClick={deletePostById}>Удалить</Button>
             </section>
         </Modal>
     );

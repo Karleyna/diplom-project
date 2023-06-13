@@ -2,7 +2,7 @@ import adminPage from "../pages/AdminPage/AdminPage";
 import {
     ADMIN_ROUTE, COURSE_ROUTE,
     LOGIN_ROUTE,
-    MAIN_ROUTE, MEDICAL_ROUTE, PERSONAL_ROUTE, POST_ROUTE,
+    MAIN_ROUTE, PERSONAL_ROUTE, POST_ROUTE,
     REGISTRATION_ROUTE,
     TRAINER_ROUTE,
     USEFUL_ROUTE
@@ -12,7 +12,6 @@ import trainerPage from "../pages/TrainerPage/TrainerPage"
 import mainPage from "../pages/MainPage/MainPage";
 import LoginPage from "../pages/LoginPages/LoginPage";
 import usefulPage from "../pages/UsefulPage/UsefulPage";
-import medicalPage from "../pages/MedicalPage/MedicalPage";
 import registrationPage from "../pages/LoginPages/RegistrationPage";
 import PersonalPage from "../pages/PersonalPage/PersonalPage";
 import React from "react";
@@ -34,10 +33,6 @@ export const adminRotes = [
         Component: usefulPage
     },
     {
-        path: MEDICAL_ROUTE,
-        Component: medicalPage
-    },
-    {
         path: POST_ROUTE + '/:id',
         Component: PostPage
     },
@@ -56,10 +51,6 @@ export const trainerRoutes = [
     {
         path: USEFUL_ROUTE,
         Component: usefulPage
-    },
-    {
-        path: MEDICAL_ROUTE,
-        Component: medicalPage
     },
     {
         path: POST_ROUTE + '/:id',
@@ -84,10 +75,6 @@ export const userRoutes = [
         Component: usefulPage
     },
     {
-        path: MEDICAL_ROUTE,
-        Component: medicalPage
-    },
-    {
         path: POST_ROUTE + '/:id',
         Component: PostPage
     },
@@ -106,9 +93,5 @@ export const publicRoutes = [
     {
         path: REGISTRATION_ROUTE,
         Component: registrationPage
-    },
-    {
-        path: MEDICAL_ROUTE,
-        Component: medicalPage
     }
 ]

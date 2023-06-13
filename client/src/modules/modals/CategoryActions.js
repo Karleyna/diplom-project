@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Form, Button, Row} from "react-bootstrap";
-import {createCategory, deleteCategory, fetchCategories, updateCategory} from "../../http/postAPI";
+import {createCategory, deleteCategory, fetchCategories, updateCategory} from "../../http/categoryAPI";
 import Modal from "../../ui/Modal/Modal";
 import MyInput from "../../ui/inputs/MyInput";
 
@@ -51,8 +51,14 @@ const CategoryActions = ({show, onHide}) => {
     }
     const addCategory = async () => {
         try {
-            await createCategory({name: value});
-            await updateResults();
+            if (value===''){
+              alert('Введите название')
+            }
+            else {
+                await createCategory({name: value});
+                await updateResults();
+            }
+
         } catch (e) {
             alert(e.response.data.message)
         }
@@ -61,8 +67,14 @@ const CategoryActions = ({show, onHide}) => {
     }
     const deleteCategoryById = async () => {
         try {
-            await deleteCategory(idCategory);
-            await updateResults();
+            if (idCategory==='') {
+                alert('Введите номер')
+            }
+            else {
+                await deleteCategory(idCategory);
+                await updateResults();
+            }
+
         } catch (e) {
             alert(e.response.data.message)
         }
@@ -70,8 +82,17 @@ const CategoryActions = ({show, onHide}) => {
     }
     const updateCategoryById = async () => {
         try {
-            await updateCategory(idCategory, value);
-            await updateResults();
+            if (idCategory==='') {
+                alert('Введите номер')
+            }
+            else if (value===''){
+                alert('Введите название')
+            }
+            else{
+                await updateCategory(idCategory, value);
+                await updateResults();
+            }
+
         } catch (e) {
             alert(e.response.data.message)
         }
@@ -84,7 +105,7 @@ const CategoryActions = ({show, onHide}) => {
             active={show}
             setActive={onHide}
         >
-            <h3>
+            <h3 style={{fontSize: '2.5rem'}}>
                 Действия с категориями
             </h3>
 
@@ -109,8 +130,8 @@ const CategoryActions = ({show, onHide}) => {
             </section>
             <section style={{display: 'flex', justifyContent: 'space-around', margin: '1vh'}}>
                 <Button variant="outline-success" onClick={addCategory}>Добавить</Button>
-                <Button variant="outline-success" onClick={deleteCategoryById}>Delete</Button>
-                <Button variant="outline-success" onClick={updateCategoryById}>Update</Button>
+                <Button variant="outline-success" onClick={deleteCategoryById}>Удалить</Button>
+                <Button variant="outline-success" onClick={updateCategoryById}>Обновить</Button>
                 <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
             </section>
             <section>

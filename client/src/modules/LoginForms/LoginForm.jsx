@@ -26,6 +26,7 @@ const LoginForm = observer(() => {
             user.setUser(data);
             user.setIsAuth(true);
             history(MAIN_ROUTE);
+            // window.location.reload();
             alert('Добро пожаловать!');
         } catch (e) {
             alert(e.response.data.message)
