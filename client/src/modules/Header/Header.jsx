@@ -44,24 +44,24 @@ const Header = observer(() => {
                         </div>
                         {user.isAuth && token.role === 'admin'?
                             <nav className="catalog-navigation-buttons">
-                                <MyLink to={ADMIN_ROUTE} >Admin</MyLink>
-                                <MyLink to={USEFUL_ROUTE} >Useful page</MyLink>
-                                <MyLink to={PERSONAL_ROUTE} >Personal cabinet</MyLink>
-                                <MyLink onClick={()=>logOut()} to='/'>Exit</MyLink>
+                                <MyLink to={ADMIN_ROUTE} >Панель администратора</MyLink>
+                                <MyLink to={USEFUL_ROUTE} >Дополнительные материалы</MyLink>
+                                <MyLink to={PERSONAL_ROUTE} >Личный кабинет</MyLink>
+                                <MyLink onClick={()=>logOut()} to='/'>Выход</MyLink>
                             </nav>
                             : user.isAuth && token.role === 'trainer' ?
                             <nav className="catalog-navigation-buttons">
-                                <MyLink to={TRAINER_ROUTE} >Trainer</MyLink>
-                                <MyLink to={USEFUL_ROUTE} >Useful page</MyLink>
-                                <MyLink to={PERSONAL_ROUTE} >Personal cabinet</MyLink>
-                                <MyLink onClick={()=>logOut()} to='/'>Exit</MyLink>
+                                <MyLink to={TRAINER_ROUTE} >Панель тренера</MyLink>
+                                <MyLink to={USEFUL_ROUTE} >Дополнительные материалы</MyLink>
+                                <MyLink to={PERSONAL_ROUTE} >Личный кабинет</MyLink>
+                                <MyLink onClick={()=>logOut()} to='/'>Выход</MyLink>
                             </nav>
                            :user.isAuth ?
                                 <nav className="catalog-navigation-buttons">
-                                    <MyLink to={USEFUL_ROUTE} >Useful page</MyLink>
-                                    <MyLink to={PERSONAL_ROUTE} >Personal cabinet</MyLink>
-                                    <MyLink to={COURSE_ROUTE} >Course</MyLink>
-                                    <MyLink onClick={()=>logOut()} to='/'>Exit</MyLink>
+                                    <MyLink to={USEFUL_ROUTE} >Дополнительные материалы</MyLink>
+                                    <MyLink to={PERSONAL_ROUTE} >Личный кабинет</MyLink>
+                                    <MyLink to={COURSE_ROUTE} >Курсы</MyLink>
+                                    <MyLink onClick={()=>logOut()} to='/'>Выход</MyLink>
                                 </nav>
                             :
                               <nav className="catalog-navigation-buttons">

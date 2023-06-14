@@ -81,7 +81,8 @@ a:hover {
     color: white;
     background: #C3462E;
     border-radius: 20px;
-    overflow: auto;
+    overflow: hidden;
+    padding-top: 1vh;
 }
 
 .description-org p{
@@ -94,7 +95,8 @@ a:hover {
     justify-content: space-around;
 }
 .course h2{
-    height: 30%;
+    height: 40%;
+
 }
 .courses{
     display: flex;
@@ -112,9 +114,13 @@ a:hover {
     /*font-size: 0.9rem;*/
     text-align: center;
     background: #0A3E4F;
+    padding: 1vw;
     height: 33vh;
     width: 20vw;
     border-radius: 15px;
+}
+.course-item h4{
+    font-size: 2rem;
 }
 .course-item:first-child{
     font-size: 1.8rem;
@@ -287,4 +293,7 @@ ol li{
 }
 .map-block h2{
     margin-bottom: 1vh;
+}
+span{
+    padding-left: 1vw;
 }

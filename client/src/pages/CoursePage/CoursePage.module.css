@@ -1,11 +1,12 @@
 .main{
-    max-height: 120vh;
+    max-height: 300vh;
     min-height: 70vh;
     width: 100%;
     display: flex;
     flex-flow: column;
     justify-content: space-around;
     align-items: center;
+    overflow: auto;
 }
 h1{
     font-size: 3rem;
@@ -28,6 +29,17 @@ h1{
     width: 90%;
     flex-flow: column;
     border: #1D3436 solid;
+    border-radius: 1vw;
+}
+.courseModuleRed{
+    background: #8F2814;
+    color: white;
+    display: flex;
+    padding: 1vw;
+    margin-top: 1vh;
+    width: 90%;
+    flex-flow: column;
+    border: #8F2814 solid;
     border-radius: 1vw;
 }
 h3{
@@ -70,7 +82,7 @@ h3{
 }
 /* :checked */
 .tab input:checked ~ .tabContent {
-    max-height: 100vh;
+    max-height: 130vh;
 }
 
 /* Icon */
@@ -98,4 +110,7 @@ h3{
 }
 .tab input[type=radio]:checked + label::after {
     transform: rotateX(180deg);
+}
+.red{
+    background: #C3462E;
 }
