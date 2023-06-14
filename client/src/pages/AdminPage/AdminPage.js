@@ -13,7 +13,6 @@ const AdminPage = observer(() => {
     const [categoryVisible, setCategoryVisible] = useState(false);
     const [usersVisible, setUsersVisible] = useState(false);
     const [postInfoVisible, setPostInfoVisible] = useState(false);
-    const [postVisible, setPostVisible] = useState(false);
     return <>
         <div style={{height: '100vh'}}>
             <div style={{height: '100%'}}>
@@ -32,14 +31,9 @@ const AdminPage = observer(() => {
                         <div>
                             <MyButton onClick={() => setPostInfoVisible(true)}>Обновление информации в публикациях</MyButton>
                         </div>
-
-                        <div>
-                            <MyButton onClick={() => setPostVisible(true)}>Обновление информации в публикациях</MyButton>
-                        </div>
                     </section>
                     <CategoryActions show={categoryVisible} onHide={() => setCategoryVisible(false)}/>
                     <UserActions show={usersVisible} onHide={() => setUsersVisible(false)}/>
-                    <CreatePost show={postVisible} onHide={() => setPostVisible(false)}></CreatePost>
                     <PostInfoActions show={postInfoVisible} onHide={() => setPostInfoVisible(false)}/>
                 </main>
             </div>
