@@ -15,14 +15,14 @@ import {Context} from "../../index";
 
 const PersonalPage = observer(() => {
     const {user} = useContext(Context);
-    const [dataOfUser, setdataOfUser] = useState([]);
+    const [dataOfUser, setDataOfUser] = useState([]);
     const navigate = useNavigate();
     let userId;
     if (localStorage.token) {
         userId = jwtDecode(localStorage.token).id;
     }
     useEffect(() => {
-        fetchOneUser(userId).then(data => setdataOfUser(data));
+        fetchOneUser(userId).then(data => setDataOfUser(data));
     }, []);
 
 
@@ -32,6 +32,7 @@ const PersonalPage = observer(() => {
             data = await updateUser(userId, values.email, values.FIO, values.telephone,values.age, dataOfUser.role);
             user.setUser(data);
             user.setIsAuth(true);
+            fetchOneUser(userId).then(data => setDataOfUser(data))
             alert('Successful');
         } catch (e) {
             alert(e.response.data.message)
@@ -39,7 +40,7 @@ const PersonalPage = observer(() => {
     };
 
     return <>
-        <section  style={{height: '30vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <section  className={classes.heading}>
             <h2> Личный кабинет</h2>
         </section>
         <section style={{height: '75vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
@@ -78,7 +79,7 @@ const PersonalPage = observer(() => {
                                                 <div style={{width: '28vw'}}>
                                                     <label>E-mail:
                                                         <MyInput type="text" {...input}
-                                                                 placeholder="Логин"/>
+                                                                 placeholder="Введите логин"/>
                                                     </label>
                                                     {meta.touched && meta.error &&
                                                         <div className={classes.comment}>{meta.error}</div>}
@@ -90,7 +91,7 @@ const PersonalPage = observer(() => {
                                             {({input, meta}) => (
                                                 <div style={{width: '28w'}}>
                                                     <label>ФИО:
-                                                        <MyInput type="text" {...input}
+                                                        <MyInput type="text" {...input} placeholder="Введите Ваше ФИО"
                                                         />
                                                     </label>
                                                     {meta.touched && meta.error &&
@@ -102,7 +103,7 @@ const PersonalPage = observer(() => {
                                             {({input, meta}) => (
                                                 <div style={{width: '28w'}}>
                                                     <label>Телефон:
-                                                        <MyInput type="text" {...input}
+                                                        <MyInput type="text" {...input} placeholder="Введите Ваш телефон"
                                                         />
                                                     </label>
                                                     {meta.touched && meta.error &&
@@ -114,7 +115,7 @@ const PersonalPage = observer(() => {
                                             {({input, meta}) => (
                                                 <div style={{width: '28w'}}>
                                                     <label>Возраст:
-                                                        <MyInput type="number" {...input}
+                                                        <MyInput type="number" {...input} placeholder="Введите Ваш возраст"
                                                         />
                                                     </label>
                                                     {meta.touched && meta.error &&
@@ -124,7 +125,7 @@ const PersonalPage = observer(() => {
                                         </Field>
                                     </div>
                                     <div className={classes.btn}>
-                                        <MyButton type="submit">Update</MyButton>
+                                        <MyButton type="submit">Обновить</MyButton>
                                     </div>
 
                                 </form>

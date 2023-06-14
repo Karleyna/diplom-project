@@ -1,11 +1,16 @@
 import React from "react";
-import "./MainPage.css";
 import map from  "./screenMap.png";
+import "./MainPage.css";
+import {REGISTRATION_ROUTE} from "../../utils/consts";
+import MyLink from "../../ui/links/MyLink";
+import {useContext} from "react";
+import {Context} from "../../index";
+import {observer} from "mobx-react";
 
 
-const MainPage = () =>
+const MainPage = observer(() =>
 {
-
+    const {user} = useContext(Context);
     return <>
 
         <div className="body">
@@ -45,9 +50,8 @@ const MainPage = () =>
                                 </p>
                             </div>
                             <div className="course-item">
-                                <h4>Курс такой-то</h4>
-                                <p>Учитывая ключевые сценарии поведения, перспективное планирование предоставляет
-                                    широкие возможности для модели развития.
+                                <h4>Мировая проблема насилия над женщиной.</h4>
+                                <p>Что такое насилие над женщиной по определению ООН и какова основная опасность?
                                 </p>
                             </div>
                         </div>
@@ -56,24 +60,25 @@ const MainPage = () =>
                         <h2>Они помогут прийти к результату!</h2>
                         <div className="group-trainers">
                             <a href="/client/src/pages" className="trainer-item">
-                                <div className="trainer-photo"> </div>
+                                <div className="trainer-photo" id="Valerii"> </div>
                                 <div className="trainer-item-text">
-                                    <h2>Тренер</h2>
-                                    <p>Описание Описание Описание </p>
+                                    <h2>Создатель концепции</h2>
+                                    <p>Талисман <br/>Валерий Борисович</p>
                                 </div>
                             </a>
                             <a href="/client/src/pages" className="trainer-item">
-                                <div className="trainer-photo"> </div>
+                                <div className="trainer-photo"  id="Natali"> </div>
                                 <div className="trainer-item-text">
                                     <h2>Тренер</h2>
-                                    <p>Описание Описание Описание </p>
+                                    <p>Трегубова Наталья</p>
                                 </div>
                             </a>
                             <a href="/client/src/pages" className="trainer-item">
-                                <div className="trainer-photo"> </div>
+                                <div className="trainer-photo" id="Pavel">
+                                </div>
                                 <div className="trainer-item-text">
                                     <h2>Тренер</h2>
-                                    <p>Описание Описание Описание </p>
+                                    <p>Павел Вингородов</p>
                                 </div>
                             </a>
                         </div>
@@ -84,18 +89,17 @@ const MainPage = () =>
                             <div className="ad-background_">
                                 <div className="ad-content_">
                                     <div className="registration-fields">
-                                        <p>Зарегистриуйтесь и получите мастер-класс в подарок!</p>
+                                        <p>Зарегистриуйтесь и начните обучение уже сегодня!</p>
                                         <div className="ad-white-border">
-                                            <div className="line one">
-                                                <input type="text" placeholder="Имя"/>
-                                                <input type="telephone" placeholder="Телефон"/>
-                                            </div>
-                                            <div className="line two">
-                                                <input type="email" placeholder="Почта"/>
-                                            </div>
+                                                <p>При обновлении данных профиля мы сможем лучше познакомиться с Вами!</p>
                                             <div className="line three">
                                                 <button type="submit">
-                                                    <p>Зарегистрироваться</p>
+                                                    {user.isAuth ?
+                                                        <p>Зарегистрироваться</p>
+                                                    :
+                                                        <p><MyLink to={REGISTRATION_ROUTE} style={{color: "white"}}> Зарегистрироваться</MyLink></p>
+                                                    }
+
                                                 </button>
                                             </div>
                                         </div>
@@ -103,7 +107,7 @@ const MainPage = () =>
                                     <div className="ad-instruction">
                                         <ol className="ad-instruction_steps">
                                             <li>После регистрации проверьте данные в аккаунте.</li>
-                                            <li>Далее перейдите во вкладку с курсами и начните обучение уже сегодня!</li>
+                                            <li>Далее перейдите во вкладку с курсами и начните обучение!</li>
                                         </ol>
                                     </div>
                                 </div>
@@ -131,4 +135,4 @@ const MainPage = () =>
         </div>
     </>
 
-}; export default MainPage;
+}); export default MainPage;

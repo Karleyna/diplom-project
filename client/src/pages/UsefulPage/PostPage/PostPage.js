@@ -30,20 +30,24 @@ const PostPage = () => {
                      borderRadius: '1vh'
                  }}>
                 {postI.title}: {postI.description}
-                <Link href={postI.file} target="_blank">{postI.title}</Link>
+                {postI.file === null?
+                    <p></p>
+                 :
+                    <Link href={postI.file} target="_blank">{postI.title}</Link>
+                }
             </Row>
         )
     })
 
     return <div>
-        ` <div style={{height: '100vh'}} className={classes.main}>
+        ` <div  className={classes.main}>
         <section>
             <div className={classes.img}>
                 <img src={process.env.REACT_APP_API_URL + '/' + post.img}/>
             </div>
             <div>
                 <div>
-                    <h2>{post.name}</h2>
+                    <h2 style={{fontSize:'3em'}}>{post.name}</h2>
                 </div>
             </div>
         </section>

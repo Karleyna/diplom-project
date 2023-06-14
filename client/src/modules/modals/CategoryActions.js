@@ -117,7 +117,7 @@ const CategoryActions = ({show, onHide}) => {
                             style={{margin: '1vh'}}
                             value={idCategory}
                             onChange={e => setIdCategory(e.target.value)}
-                            placeholder={"Введите ID раздела"}
+                            placeholder={"Введите ID раздела для обновления или удаления"}
                         />
                         <MyInput
                             style={{margin: '1vh'}}
@@ -128,7 +128,7 @@ const CategoryActions = ({show, onHide}) => {
                     </section>
                 </Form>
             </section>
-            <section style={{display: 'flex', justifyContent: 'space-around', margin: '1vh'}}>
+            <section style={{display: 'flex', justifyContent: 'space-around', margin: '1vh',  overflow:'auto'}}>
                 <Button variant="outline-success" onClick={addCategory}>Добавить</Button>
                 <Button variant="outline-success" onClick={deleteCategoryById}>Удалить</Button>
                 <Button variant="outline-success" onClick={updateCategoryById}>Обновить</Button>

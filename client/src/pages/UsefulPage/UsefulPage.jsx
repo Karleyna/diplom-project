@@ -13,21 +13,21 @@ const UsefulPage = observer(() => {
 
     useEffect(() => {
         fetchCategories().then(data => post.setCategories(data))
-        fetchPosts(null, 1, 5).then(data => {
+        fetchPosts(null, 1, 8).then(data => {
             post.setPosts(data.rows)
             post.setTotalCount(data.count)
         })
     }, [])
 
     useEffect(() => {
-        fetchPosts(post.selectedCategory.id, post.page, 5).then(data => {
+        fetchPosts(post.selectedCategory.id, post.page, 8).then(data => {
             post.setPosts(data.rows)
             post.setTotalCount(data.count)
         })
     }, [post.page, post.selectedCategory])
 
 
-    return <>
+    return <section >
         <div className={classes.main}>
             <div className={classes.header}>
                 <h1 style={{color:'white'}}>Публикации</h1>
@@ -42,8 +42,9 @@ const UsefulPage = observer(() => {
             </section>
 
             <Pages/>
+            <div></div>
         </div>
-    </>
+    </section>
 
 });
 

@@ -25,7 +25,7 @@ const Category = sequelize.define('category', {
 const PostInfo = sequelize.define('post_info', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     title: {type: DataTypes.STRING, allowNull: false},
-    description: {type: DataTypes.STRING, allowNull: true},
+    description: {type: DataTypes.TEXT, allowNull: true},
     file:{type: DataTypes.STRING, allowNull: true},
 });
  const Certificate = sequelize.define( 'certificate', {

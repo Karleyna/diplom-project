@@ -26,9 +26,9 @@ const TrainerPage = observer(() => {
                         <div>
                             <MyButton onClick={() => setPostVisible(true)}>Работа с публикациями</MyButton>
                         </div>
-                        <div>
-                            <MyButton onClick={() => setCertificateVisible(true)}>Работа с сертификатами</MyButton>
-                        </div>
+                        {/*<div>*/}
+                        {/*    <MyButton onClick={() => setCertificateVisible(true)}>Работа с сертификатами</MyButton>*/}
+                        {/*</div>*/}
                         <div>
                             <MyButton onClick={() => setPostInfoVisible(true)}>Обновление информации в публикациях</MyButton>
                         </div>

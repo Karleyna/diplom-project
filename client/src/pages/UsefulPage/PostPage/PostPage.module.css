@@ -1,6 +1,7 @@
 .main{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    max-height: 240vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,13 +17,14 @@
 }
 .img img {
     max-width: 25vw;
-    max-height: 45vh;
+    max-height: 40vh;
 }
 .description{
     display: flex;
     width: 80%;
+    max-height: 60vh;
     flex-flow: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-
+    overflow: auto;
 }

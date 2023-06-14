@@ -7,7 +7,7 @@ export default class PostStore {
         this._selectedCategory = {}
         this._page = 1
         this._totalCount = 0
-        this._limit = 4
+        this._limit = 8
         makeAutoObservable(this)
     }
 

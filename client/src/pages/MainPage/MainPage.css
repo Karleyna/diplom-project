@@ -140,6 +140,7 @@ a:hover {
     /*overflow: auto;*/
 }
 .trainer-item{
+    pointer-events: none;
     text-decoration:none;
     display: flex;
     flex-flow: column;
@@ -161,19 +162,35 @@ a:hover {
     background: white;
     border-radius: 60%;
 }
+.trainer-photo#Pavel{
+    background-image: url("../../ui/PicturesForUI/Pavel.png");
+    background-size: cover;
+}
+.trainer-photo#Valerii{
+    background-image: url("../../ui/PicturesForUI/Valerii.jpeg");
+    background-size: cover;
+}
+.trainer-photo#Natali{
+    background-image: url("../../ui/PicturesForUI/Natali.png");
+    background-size: cover;
+}
+
 .trainer-item-text{
     display: flex;
     flex-flow: column;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 10vw;
+}
+.trainer-item-text h2{
+    font-size: 2.2em;
 }
 .trainer-item:last-child{
     order: 2;
 }
 .trainer-item:first-child{
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     width: 22vw;
-    height: 54vh;
+    height: 56vh;
     order: 1;
 }
 .trainer-item:first-child .trainer-photo{
@@ -239,15 +256,9 @@ a:hover {
     width: 40vw;
     height: 7vh;
 }
-.line.one input{
-    border-radius: 15px;
-    width: 18vw;
-    font-family: "Comfortaa", serif;
-}
-.line.two input{
-    width: 40vw;
-    border-radius: 15px;
-    font-family: "Comfortaa", serif;
+.line.three{
+    width: 35vw;
+    height: 8vh;
 }
 .line button{
     width: 40vw;

@@ -136,7 +136,9 @@ const UserActions = ({show, onHide}) => {
                     justifyContent: 'center',
                     margin: '2vh',
                     flexFlow: 'column',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    maxHeight:'20vh',
+                    overflow:'auto'
                 }}>
                     {results}
                 </div>

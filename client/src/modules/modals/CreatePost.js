@@ -18,7 +18,7 @@ const CreatePost = observer(({show, onHide}) => {
     let categories = new Map();
     useEffect(() => {
         fetchCategories().then(data => post.setCategories(data));
-        fetchPosts().then(data => post.setPosts(data.rows));
+        fetchPosts(null,-1).then(data => post.setPosts(data));
     }, [])
     post.categories.forEach(category => {
             categories.set(category.id, category.name)
@@ -58,8 +58,8 @@ const CreatePost = observer(({show, onHide}) => {
             formData.append('categoryId', post.selectedCategory.id);
             await createPost(formData);
             await updateResults();
-            // setName('');
-            // setFileImg(null);
+            setName('');
+            setFileImg(null);
         }
     }
     const updatePostById = async () => {
@@ -94,8 +94,8 @@ const CreatePost = observer(({show, onHide}) => {
     }
     const updateResults = async () => {
         results = [];
-        let data = await fetchPosts();
-        post.setPosts(data.rows);
+        let data = await fetchPosts(null,-1);
+        post.setPosts(data);
         post.posts.forEach((property, index) => {
             results.push(
                 <Row key={property.id}
@@ -158,7 +158,7 @@ const CreatePost = observer(({show, onHide}) => {
                         onChange={selectFileImg}
                     />
                     <hr/>
-                    <div style={{display: 'flex', justifyContent: 'space-between', flexFlow:'column', alignItems:'center'}}>
+                    <div style={{display: 'flex', justifyContent: 'space-between', flexFlow:'column', alignItems:'center', maxHeight:'20vh',overflow:'auto'}}>
                         {results}
                     </div>
                 </Form>

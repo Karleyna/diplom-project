@@ -223,10 +223,12 @@ const PostInfoActions = ({show, onHide}) => {
                 <div style={{
                     display: 'flex',
                     zIndex: '2',
-                    justifyContent: 'center',
+                    justifyContent: 'flex-start',
                     margin: '2vh',
                     flexFlow: 'column',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    maxHeight:'20vh',
+                    overflow:'auto'
                 }}>
                     {results}
 
